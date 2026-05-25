@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="MacroVision Terminal">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#080b12"/>
+      <stop offset="0.55" stop-color="#101827"/>
+      <stop offset="1" stop-color="#05070d"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" x2="1">
+      <stop offset="0" stop-color="#ddb65c"/>
+      <stop offset="1" stop-color="#c49135"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M0 540C210 460 340 590 540 510C740 430 850 470 1200 360V630H0Z" fill="#0f1724"/>
+  <g opacity="0.12" stroke="#ffffff">
+    <path d="M0 90h1200M0 180h1200M0 270h1200M0 360h1200M0 450h1200"/>
+    <path d="M120 0v630M240 0v630M360 0v630M480 0v630M600 0v630M720 0v630M840 0v630M960 0v630M1080 0v630"/>
+  </g>
+  <rect x="72" y="72" width="118" height="118" rx="24" fill="url(#gold)"/>
+  <text x="131" y="145" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="800" fill="#111317">MV</text>
+  <text x="72" y="275" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="800" fill="#f3f6fb">MacroVision</text>
+  <text x="72" y="346" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#ddb65c">Análisis financiero y mercados en vivo</text>
+  <text x="72" y="420" font-family="Inter, Arial, sans-serif" font-size="28" fill="#a7b3c7">Noticias macroeconómicas, activos financieros, vídeos y contexto de mercado.</text>
+  <g transform="translate(800 118)">
+    <rect width="310" height="270" rx="18" fill="#121824" stroke="#ffffff" stroke-opacity="0.12"/>
+    <path d="M35 205 92 154l52 28 58-90 70 38" fill="none" stroke="#39d98a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="35" y="70" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="800" fill="#f3f6fb">Market terminal</text>
+    <text x="35" y="108" font-family="Inter, Arial, sans-serif" font-size="18" fill="#98a5b8">Live briefing</text>
+  </g>
+</svg>
