@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MacroVision es una terminal profesional de análisis financiero, mercados en vivo, noticias macroeconómicas, seguimiento de activos y vídeos de actualidad.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="MacroVision">
+  <meta name="theme-color" content="#080b12">
+  <meta name="application-name" content="MacroVision">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MacroVision">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="MacroVision | Análisis financiero y mercados en vivo">
+  <meta property="og:description" content="Terminal profesional para vigilar mercados, índices, criptomonedas, divisas, noticias macroeconómicas y vídeos de actualidad financiera.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MacroVision | Análisis financiero y mercados en vivo">
+  <meta name="twitter:description" content="Sigue mercados, noticias macro, activos financieros y vídeos recientes desde una terminal profesional.">
+
+  <title>MacroVision | Análisis financiero y mercados en vivo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://s3.tradingview.com/tv.js" defer></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MacroVision",
+      "description": "Terminal profesional de análisis financiero, mercados en vivo, noticias macroeconómicas y vídeos de actualidad.",
+      "inLanguage": "es-ES",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MacroVision",
+        "sameAs": [
+          "https://www.youtube.com/@NoticiasMacroVision"
+        ]
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "MacroVision | Análisis financiero y mercados en vivo",
+      "description": "Página principal de MacroVision con mercados en vivo, análisis macroeconómico, noticias financieras, artículos de actualidad y acceso al canal Noticias MacroVision.",
+      "inLanguage": "es-ES",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "MacroVision"
+      },
+      "about": [
+        "análisis financiero",
+        "mercados en vivo",
+        "noticias macroeconómicas",
+        "renta variable",
+        "criptomonedas",
+        "divisas",
+        "materias primas"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div class="ticker" aria-label="Resumen de mercado">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="MacroVision inicio">
+      <span class="brand-mark">MV</span>
+      <span>
+        <strong>MacroVision</strong>
+        <small>Market Intelligence</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+      <a class="nav-link active" href="#inicio">Inicio</a>
+      <a class="nav-link" href="#mercados">Mercados</a>
+      <a class="nav-link" href="#analisis">Análisis</a>
+      <a class="nav-link" href="#actualidad">Actualidad</a>
+      <a class="nav-link" href="#videos">Vídeos</a>
+      <a class="nav-link" href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="header-actions">
+        <button class="button button-ghost" type="button" data-scroll="#videos">Vídeos</button>
+        <button class="button button-primary" type="button" data-scroll="#contacto">Solicitar acceso</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-shell" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Terminal profesional de inteligencia macro</p>
+        <h1>Análisis financiero, mercados en vivo y noticias macroeconómicas en una sola terminal.</h1>
+        <p class="hero-text">
+          Centraliza vigilancia de índices, renta variable, criptomonedas, divisas, materias primas y actualidad económica en una interfaz preparada para análisis diario.
+        </p>
+
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" data-scroll="#mercados">Ver terminal</button>
+          <button class="button button-secondary" type="button" data-scroll="#analisis">Explorar análisis</button>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Resumen ejecutivo">
+        <div class="session-card">
+          <span>Sesión</span>
+          <strong id="session-state">Europa abierta</strong>
+        </div>
+        <div class="session-card">
+          <span>Riesgo</span>
+          <strong id="risk-state">Moderado</strong>
+        </div>
+        <div class="session-card">
+          <span>Señal principal</span>
+          <strong id="signal-state">Rotación defensiva</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="terminal section-shell" id="mercados">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Mercados</p>
+          <h2>Panel operativo de mercados en vivo</h2>
+          <p class="section-intro">Consulta activos financieros, gráficos, volatilidad, liquidez y rotación sectorial desde un entorno orientado a seguimiento profesional.</p>
+        </div>
+        <div class="live-pill"><span></span> Datos simulados en vivo</div>
+      </div>
+
+      <div class="dashboard-grid">
+        <section class="panel market-panel" aria-labelledby="chart-title">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Activo seleccionado</p>
+              <h3 id="chart-title"><span id="selected-symbol">AAPL</span> / USD</h3>
+            </div>
+            <div class="asset-meta">
+              <strong id="selected-price">$189.32</strong>
+              <span id="selected-change" class="positive">+1.24%</span>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <div id="tv_chart" class="chart-surface">
+              <div class="chart-fallback">
+                <span>Gráfico interactivo</span>
+                <strong>TradingView se cargará al abrir la página con conexión.</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="metrics" aria-label="Métricas del activo">
+            <article class="metric">
+              <span>Volatilidad</span>
+              <strong id="metric-volatility">Media</strong>
+            </article>
+            <article class="metric">
+              <span>Momentum</span>
+              <strong id="metric-momentum">Constructivo</strong>
+            </article>
+            <article class="metric">
+              <span>Liquidez</span>
+              <strong id="metric-liquidity">Alta</strong>
+            </article>
+            <article class="metric">
+              <span>Rango diario</span>
+              <strong id="metric-range">1.8%</strong>
+            </article>
+          </div>
+        </section>
+
+        <aside class="side-stack" aria-label="Herramientas de mercado">
+          <section class="panel compact-panel">
+            <div class="panel-header tight">
+              <div>
+                <p class="panel-kicker">Lista de seguimiento</p>
+                <h3>Activos vigilados</h3>
+              </div>
+            </div>
+            <form class="watchlist-form" id="watchlist-form">
+              <label class="sr-only" for="symbol-input">Símbolo</label>
+              <input id="symbol-input" name="symbol" type="text" maxlength="12" placeholder="Ej. SPY, EURUSD">
+              <button class="button button-icon" type="submit" aria-label="Añadir símbolo">+</button>
+            </form>
+            <div class="watchlist" id="watchlist-container"></div>
+          </section>
+
+          <section class="panel compact-panel">
+            <div class="panel-header tight">
+              <div>
+                <p class="panel-kicker">Mapa sectorial</p>
+                <h3>Mapa de calor</h3>
+              </div>
+            </div>
+            <div class="heatmap" id="heatmap">
+              <div class="heat-tile up strong">Tecnología<span>+1.8%</span></div>
+              <div class="heat-tile up">Salud<span>+0.7%</span></div>
+              <div class="heat-tile down">Energía<span>-0.4%</span></div>
+              <div class="heat-tile down strong">Finanzas<span>-1.2%</span></div>
+              <div class="heat-tile up">Industria<span>+0.5%</span></div>
+              <div class="heat-tile neutral">Consumo<span>0.0%</span></div>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="analysis section-shell" id="analisis">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Análisis</p>
+          <h2>Análisis macroeconómico y técnico</h2>
+          <p class="section-intro">Lecturas de inflación, bancos centrales, rotación de cartera y niveles técnicos relevantes para interpretar el contexto de mercado.</p>
+        </div>
+      </div>
+
+      <div class="analysis-grid">
+        <article class="panel insight-card">
+          <span class="tag">Macro</span>
+          <h3>Inflación y bancos centrales</h3>
+          <p>El mercado descuenta una senda de tipos más estable. La clave está en salarios, energía y expectativas de crecimiento.</p>
+        </article>
+        <article class="panel insight-card">
+          <span class="tag">Riesgo</span>
+          <h3>Rotación de cartera</h3>
+          <p>El flujo alterna entre tecnología de alta capitalización y sectores defensivos mientras se ajustan las primas de riesgo.</p>
+        </article>
+        <article class="panel insight-card">
+          <span class="tag">Técnico</span>
+          <h3>Niveles a vigilar</h3>
+          <p>La reacción en soportes semanales y rupturas con volumen ayuda a separar ruido intradía de movimiento direccional.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="news-section section-shell" id="actualidad">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Actualidad</p>
+          <h2>Noticias macroeconómicas y briefing de mercado</h2>
+          <p class="section-intro">Titulares desarrollados como síntesis editorial propia, con referencias públicas y notas de atribución para una lectura responsable.</p>
+        </div>
+        <button class="button button-secondary" type="button" id="refresh-news">Actualizar</button>
+      </div>
+
+      <div class="news-layout">
+        <section class="panel news-panel">
+          <div id="news-track" class="news-list"></div>
+        </section>
+
+        <section class="panel calendar-panel">
+          <p class="panel-kicker">Calendario</p>
+          <h3>Eventos clave</h3>
+          <div class="event-list" id="event-list"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="article-section section-shell" id="articulos" aria-live="polite">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Lectura ampliada</p>
+          <h2>Artículos de actualidad</h2>
+        </div>
+      </div>
+
+      <article class="panel article-view" id="article-view">
+        <span class="tag">Selecciona una noticia</span>
+        <h3>Abre cualquier titular del briefing para leer el desarrollo completo.</h3>
+        <p>
+          Cada artículo está redactado como síntesis editorial propia y contiene una nota de atribución para evitar reproducir material protegido.
+        </p>
+      </article>
+    </section>
+
+    <section class="video-section section-shell" id="videos">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Canal de YouTube</p>
+          <h2>Últimos vídeos de Noticias MacroVision</h2>
+          <p class="section-intro">Acceso directo al canal oficial, vídeos recientes, shorts y emisiones para ampliar el seguimiento de actualidad financiera.</p>
+        </div>
+        <a class="button button-secondary" id="youtube-channel-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
+          Abrir canal
+        </a>
+      </div>
+
+      <div class="video-layout">
+        <section class="panel video-feature">
+          <div class="video-frame" id="featured-video">
+            <div class="video-placeholder">
+              <strong>Selecciona un vídeo</strong>
+              <span>Accede a los últimos vídeos, shorts y directos publicados en el canal Noticias MacroVision.</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel video-list-panel">
+          <p class="panel-kicker">Publicaciones recientes</p>
+          <h3>Lista editorial</h3>
+          <p class="video-note" id="youtube-note"></p>
+          <div class="video-list" id="video-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="contact section-shell" id="contacto">
+      <div class="contact-card">
+        <div>
+          <p class="eyebrow">Acceso profesional</p>
+          <h2>Prepara tu mesa de análisis con MacroVision.</h2>
+          <p>Solicita una demo, configura tus activos principales y define alertas para tu operativa diaria.</p>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <label>
+            Nombre
+            <input name="name" type="text" placeholder="Tu nombre" required>
+          </label>
+          <label>
+            Correo electrónico
+            <input name="email" type="email" placeholder="nombre@empresa.com" required>
+          </label>
+          <button class="button button-primary" type="submit">Enviar solicitud</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>MacroVision Market Intelligence</span>
+    <span>Datos demostrativos para presentación web.</span>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
