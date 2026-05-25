@@ -370,7 +370,8 @@ h3 {
 .news-section,
 .article-section,
 .video-section,
-.contact {
+.contact,
+.legal-note {
   scroll-margin-top: 140px;
   padding: 42px 0;
 }
@@ -903,6 +904,24 @@ input:focus {
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.86rem;
+}
+
+.legal-note {
+  padding-top: 14px;
+}
+
+.legal-note h2 {
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.legal-note p {
+  max-width: 980px;
+  margin: 0;
+  color: var(--faint);
+  font-size: 0.88rem;
+  line-height: 1.75;
 }
 
 @media (max-width: 1120px) {

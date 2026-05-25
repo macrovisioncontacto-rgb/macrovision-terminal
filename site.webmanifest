@@ -1,0 +1,16 @@
+{
+  "name": "MacroVision",
+  "short_name": "MacroVision",
+  "description": "Terminal profesional de análisis financiero, mercados en vivo y noticias macroeconómicas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b12",
+  "theme_color": "#080b12",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
+}
