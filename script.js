@@ -190,7 +190,7 @@ function createTicker(asset) {
     <button class="ticker-item" data-symbol="${asset.symbol}">
       <strong>${asset.symbol}</strong>
       <span class="${cls}">
-        ${sign}${asset.change.toFixed(2)}% ${formatPrice(asset)}
+        ${Number(asset.change || 0).toFixed(2)}% ${formatPrice(asset)}
       </span>
     </button>
   `;
@@ -225,7 +225,10 @@ async function fetchSingleSymbol(symbol) {
     if (!asset) return;
 
     asset.price = data.c;
-    asset.change = data.pc ? (((data.c - data.pc) / data.pc) * 100).toFixed(2) : 0;
+
+asset.change = data.pc
+  ? ((data.c - data.pc) / data.pc) * 100
+  : 0;
 
   } catch (e) {
     console.error("fetch error", symbol, e);
@@ -249,8 +252,8 @@ function updateUI() {
 
   const el = document.getElementById("selected-change");
   if (el) {
-    el.textContent = `${asset.change >= 0 ? "+" : ""}${asset.change}%`;
-    el.className = asset.change >= 0 ? "positive" : "negative";
+    el.textContent = `${safeNumber(asset.change) >= 0 ? "+" : ""}${safeNumber(asset.change).toFixed(2)}%`;
+    el.className = safeNumber(asset.change) >= 0 ? "positive" : "negative";
   }
 }
 
@@ -269,12 +272,15 @@ function selectSymbol(symbol) {
 
 function formatPrice(a) {
 
-  if (a.symbol === "EURUSD") return Number(a.price).toFixed(4);
+  if (!a) return "--";
+
+  if (a.symbol === "EURUSD")
+    return Number(a.price || 0).toFixed(4);
 
   if (a.symbol === "BTCUSD")
-    return `$${Number(a.price).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
+    return `$${Number(a.price || 0).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
 
-  return `$${Number(a.price).toFixed(2)}`;
+  return `$${Number(a.price || 0).toFixed(2)}`;
 }
 
 /* =========================
@@ -364,3 +370,8 @@ function renderFooter() {
 function startLiveUpdates() {
   state.intervals.push(setInterval(fetchLiveMarketData, 15000));
 }
+function safeNumber(value) {
+  const n = Number(value);
+  return isNaN(n) ? 0 : n;
+}
+safeNumber(asset.change).toFixed(2)
