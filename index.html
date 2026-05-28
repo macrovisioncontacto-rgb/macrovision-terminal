@@ -1,85 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MacroVision es una terminal profesional de análisis financiero, mercados en vivo, noticias macroeconómicas, seguimiento de activos y vídeos de actualidad.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="author" content="MacroVision">
-  <meta name="theme-color" content="#080b12">
-  <meta name="application-name" content="MacroVision">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="MacroVision">
-  <meta property="og:locale" content="es_ES">
-  <meta property="og:title" content="MacroVision | Análisis financiero y mercados en vivo">
-  <meta property="og:description" content="Terminal profesional para vigilar mercados, índices, criptomonedas, divisas, noticias macroeconómicas y vídeos de actualidad financiera.">
-  <meta property="og:image" content="https://noticias.macrovision-contacto.workers.dev/assets/og-image.png">
-  <meta property="og:image:secure_url" content="https://noticias.macrovision-contacto.workers.dev/assets/og-image.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="MacroVision, terminal de análisis financiero y mercados en vivo">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MacroVision | Análisis financiero y mercados en vivo">
-  <meta name="twitter:description" content="Sigue mercados, noticias macro, activos financieros y vídeos recientes desde una terminal profesional.">
-  <meta name="twitter:image" content="https://noticias.macrovision-contacto.workers.dev/assets/og-image.png">
-
-  <link rel="canonical" href="https://noticias.macrovision-contacto.workers.dev/">
-  <meta property="og:url" content="https://noticias.macrovision-contacto.workers.dev/">
 
   <title>MacroVision | Análisis financiero y mercados en vivo</title>
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="site.webmanifest">
+  <meta
+    name="description"
+    content="MacroVision es una terminal profesional de análisis financiero, mercados en vivo, noticias macroeconómicas y seguimiento de activos."
+  >
+
+  <meta name="theme-color" content="#080b12">
+
+  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <script src="https://s3.tradingview.com/tv.js" defer></script>
+  <!-- TRADINGVIEW -->
+  <script
+    src="https://s3.tradingview.com/tv.js"
+    defer
+  ></script>
+
+  <!-- SEO -->
+  <meta property="og:title" content="MacroVision">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://noticias.macrovision-contacto.workers.dev/">
+  <meta property="og:image" content="assets/og-image.png">
+
+  <!-- JSON-LD -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "MacroVision",
-      "url": "https://noticias.macrovision-contacto.workers.dev/",
-      "description": "Terminal profesional de análisis financiero, mercados en vivo, noticias macroeconómicas y vídeos de actualidad.",
-      "inLanguage": "es-ES",
-      "publisher": {
-        "@type": "Organization",
-        "name": "MacroVision",
-        "sameAs": [
-          "https://www.youtube.com/@NoticiasMacroVision"
-        ]
-      }
-    }
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"MacroVision",
+    "url":"https://noticias.macrovision-contacto.workers.dev/"
+  }
   </script>
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "MacroVision | Análisis financiero y mercados en vivo",
-      "url": "https://noticias.macrovision-contacto.workers.dev/",
-      "description": "Página principal de MacroVision con mercados en vivo, análisis macroeconómico, noticias financieras, artículos de actualidad y acceso al canal Noticias MacroVision.",
-      "inLanguage": "es-ES",
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "MacroVision",
-        "url": "https://noticias.macrovision-contacto.workers.dev/"
-      },
-      "about": [
-        "análisis financiero",
-        "mercados en vivo",
-        "noticias macroeconómicas",
-        "renta variable",
-        "criptomonedas",
-        "divisas",
-        "materias primas"
-      ]
-    }
-  </script>
+
 </head>
 <body>
   <div class="ticker" aria-label="Resumen de mercado">
@@ -95,6 +63,7 @@
       </span>
     </a>
 
+    
     <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
       <span></span>
       <span></span>
@@ -113,17 +82,23 @@
     <div class="header-actions">
         <button class="button button-ghost" type="button" data-scroll="#videos">Vídeos</button>
         <button class="button button-primary" type="button" data-scroll="#contacto">Solicitar acceso</button>
+
+
+  <button onclick="I18N.setLanguage('es')">ES</button>
+  <button onclick="I18N.setLanguage('en')">EN</button>
+
     </div>
   </header>
-
   <main>
     <section class="hero section-shell" id="inicio">
       <div class="hero-copy">
         <p class="eyebrow">Terminal profesional de inteligencia macro</p>
-        <h1>Análisis financiero, mercados en vivo y noticias macroeconómicas en una sola terminal.</h1>
-        <p class="hero-text">
-          Centraliza vigilancia de índices, renta variable, criptomonedas, divisas, materias primas y actualidad económica en una interfaz preparada para análisis diario.
-        </p>
+        <h1 data-i18n="hero_title">
+  Análisis financiero...
+</h1>
+        <p class="hero-intro" data-i18n="hero_intro">
+  Accede a mercados en vivo, análisis macroeconómico, noticias y seguimiento de activos desde un entorno orientado a profesionales.
+</p>
 
         <div class="hero-actions">
           <button class="button button-primary" type="button" data-scroll="#mercados">Ver terminal</button>
@@ -170,15 +145,11 @@
             </div>
           </div>
 
-          <div class="chart-wrap">
-            <div id="tv_chart" class="chart-surface">
-              <div class="chart-fallback">
-                <span>Gráfico interactivo</span>
-                <strong>TradingView se cargará al abrir la página con conexión.</strong>
-              </div>
-            </div>
-          </div>
+<div class="chart-wrap">
 
+  <div id="tv_chart" class="chart-surface"></div>
+
+</div>
           <div class="metrics" aria-label="Métricas del activo">
             <article class="metric">
               <span>Volatilidad</span>
@@ -366,275 +337,146 @@
       </p>
     </section>
   </main>
+<footer class="site-footer mv-footer">
 
-  <footer class="site-footer">
-    <span>MacroVision Market Intelligence</span>
-    <span>Datos demostrativos para presentación web.</span>
-  </footer>
+  <div class="footer-glow"></div>
 
-  <script src="script.js" defer></script>
-</body>
-</html>
+  <div class="footer-container">
 
-<html lang="es">
-<head>
+    <div class="footer-column footer-brand">
+      <h3>MacroVision</h3>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <p>
+        Terminal profesional de mercados, análisis macroeconómico
+        y seguimiento financiero en tiempo real.
+      </p>
+    </div>
 
-  <title>Sobre Nosotros | MacroVision</title>
+    <div class="footer-column footer-links">
+      <h4>Mercados</h4>
 
-  <meta
-    name="description"
-    content="MacroVision es una plataforma financiera centrada en mercados, macroeconomía y análisis de activos globales."
-  />
+      <a href="#mercados">Mercados</a>
+      <a href="#analisis">Análisis</a>
+      <a href="#actualidad">Noticias</a>
+      <a href="#videos">Vídeos</a>
+    </div>
 
-  <link rel="stylesheet" href="style.css" />
+    <div class="footer-column footer-links">
+      <h4>Legal</h4>
 
-</head>
+      <a href="privacy.html">Privacidad</a>
+      <a href="#">Términos</a>
+      <a href="#">Cookies</a>
+    </div>
 
-<body class="legal-page">
+    <div class="footer-column footer-contact">
+      <h4>Contacto</h4>
 
-  <main class="legal-container">
+      <p>contacto@macrovision.com</p>
+      <p>España</p>
+    </div>
 
-    <h1>Sobre MacroVision</h1>
+  </div>
 
-    <p>
-      MacroVision es una plataforma digital enfocada en información financiera,
-      mercados globales, macroeconomía, activos tecnológicos, criptomonedas
-      y seguimiento de tendencias económicas internacionales.
-    </p>
-
-    <p>
-      Nuestro objetivo es ofrecer una experiencia visual moderna con acceso
-      rápido a noticias financieras, análisis de mercado y herramientas
-      de seguimiento de activos en tiempo real.
-    </p>
-
-    <p>
-      El contenido mostrado tiene carácter exclusivamente informativo y no
-      constituye asesoramiento financiero, legal o de inversión.
-    </p>
-
-    <p>
-      MacroVision combina tecnología web moderna, visualización de datos
-      financieros y fuentes públicas de información para crear una experiencia
-      avanzada de análisis y seguimiento de mercados.
-    </p>
-
-    <a href="index.html" class="back-link">
-      ← Volver al inicio
-    </a>
-
-  </main>
-
-</body>
-</html>
-
-<html lang="es">
-<head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Política de Privacidad | MacroVision</title>
-
-  <link rel="stylesheet" href="style.css" />
-
-</head>
-
-<body class="legal-page">
-
-  <main class="legal-container">
-
-    <h1>Política de Privacidad</h1>
-
-    <p>
-      En MacroVision respetamos la privacidad de nuestros usuarios y nos
-      comprometemos a proteger cualquier información recopilada durante
-      el uso de esta página web.
-    </p>
-
-    <h2>Información recopilada</h2>
-
-    <p>
-      Podemos recopilar datos técnicos básicos como dirección IP, navegador,
-      dispositivo utilizado y estadísticas de navegación mediante cookies
-      y herramientas analíticas.
-    </p>
-
-    <h2>Uso de la información</h2>
-
-    <p>
-      La información recopilada se utiliza exclusivamente para:
-    </p>
-
-    <ul>
-      <li>Mejorar la experiencia de usuario.</li>
-      <li>Optimizar el rendimiento del sitio web.</li>
-      <li>Analizar tráfico y comportamiento de navegación.</li>
-      <li>Mostrar publicidad personalizada mediante terceros autorizados.</li>
-    </ul>
-
-    <h2>Google AdSense</h2>
-
-    <p>
-      Este sitio puede utilizar Google AdSense para mostrar anuncios.
-      Google puede utilizar cookies para personalizar publicidad basada
-      en la navegación del usuario.
-    </p>
-
-    <h2>Cookies</h2>
-
-    <p>
-      El usuario puede configurar su navegador para rechazar cookies o
-      eliminarlas manualmente en cualquier momento.
-    </p>
-
-    <h2>Contacto</h2>
-
-    <p>
-      Para cualquier consulta relacionada con privacidad o protección de datos,
-      puede contactar a través del formulario disponible en la web.
-    </p>
-
-    <a href="index.html" class="back-link">
-      ← Volver al inicio
-    </a>
-
-  </main>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Política de Cookies | MacroVision</title>
-
-  <link rel="stylesheet" href="style.css" />
-
-</head>
-
-<body class="legal-page">
-
-  <main class="legal-container">
-
-    <h1>Política de Cookies</h1>
-
-    <p>
-      Esta web utiliza cookies para mejorar la experiencia del usuario,
-      analizar tráfico y ofrecer contenido personalizado.
-    </p>
-
-    <h2>¿Qué son las cookies?</h2>
-
-    <p>
-      Las cookies son pequeños archivos almacenados en el navegador
-      del usuario que permiten recordar información de navegación.
-    </p>
-
-    <h2>Tipos de cookies utilizadas</h2>
-
-    <ul>
-      <li>Cookies técnicas necesarias para el funcionamiento.</li>
-      <li>Cookies analíticas.</li>
-      <li>Cookies publicitarias.</li>
-      <li>Cookies de terceros como Google AdSense o Google Analytics.</li>
-    </ul>
-
-    <h2>Gestión de cookies</h2>
-
-    <p>
-      El usuario puede aceptar, rechazar o eliminar cookies desde la
-      configuración de su navegador.
-    </p>
-
-    <a href="index.html" class="back-link">
-      ← Volver al inicio
-    </a>
-
-  </main>
-
-</body>
-</html>
-
-<html lang="es">
-<head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Aviso Legal | MacroVision</title>
-
-  <link rel="stylesheet" href="style.css" />
-
-</head>
-
-<body class="legal-page">
-
-  <main class="legal-container">
-
-    <h1>Aviso Legal</h1>
-
-    <p>
-      El contenido mostrado en MacroVision tiene carácter exclusivamente
-      informativo y educativo.
-    </p>
-
-    <p>
-      MacroVision no constituye asesoramiento financiero, fiscal,
-      jurídico o de inversión.
-    </p>
-
-    <p>
-      El usuario es responsable de cualquier decisión financiera tomada
-      basándose en información mostrada en esta página web.
-    </p>
-
-    <p>
-      Algunas noticias y referencias pueden proceder de APIs, fuentes
-      públicas o terceros enlazados externamente.
-    </p>
-
-    <p>
-      Todas las marcas, logotipos y nombres comerciales pertenecen
-      a sus respectivos propietarios.
-    </p>
-
-    <p>
-      MacroVision no garantiza la exactitud absoluta, integridad o
-      actualización permanente de la información mostrada.
-    </p>
-
-    <a href="index.html" class="back-link">
-      ← Volver al inicio
-    </a>
-
-  </main>
-
-</body>
-<footer class="site-footer">
-
-  <a href="sobre-nosotros.html">
-    Sobre Nosotros
-  </a>
-
-  <a href="politica-privacidad.html">
-    Privacidad
-  </a>
-
-  <a href="cookies.html">
-    Cookies
-  </a>
-
-  <a href="aviso-legal.html">
-    Aviso Legal
-  </a>
+  <div class="footer-bottom">
+    © 2026 MacroVision · Market Intelligence
+  </div>
 
 </footer>
+
+  <script src="script.js" defer></script>
+  <script>
+
+window.addEventListener("load", () => {
+
+  if (typeof TradingView === "undefined") {
+
+    document.getElementById("tv_chart").innerHTML = `
+      <div class="chart-fallback">
+        <strong>Error cargando TradingView</strong>
+        <span>Comprueba conexión o bloqueadores.</span>
+      </div>
+    `;
+
+    return;
+  }
+
+  new TradingView.widget({
+
+    container_id: "tv_chart",
+
+    autosize: true,
+
+    symbol: "NASDAQ:AAPL",
+
+    interval: "60",
+
+    timezone: "Europe/Madrid",
+
+    theme: "dark",
+
+    style: "1",
+
+    locale: "es",
+
+    toolbar_bg: "#0b1019",
+
+    enable_publishing: false,
+
+    hide_top_toolbar: false,
+
+    hide_side_toolbar: false,
+
+    allow_symbol_change: true,
+
+    withdateranges: true,
+
+    save_image: true,
+
+    studies: [
+      "Volume@tv-basicstudies",
+      "MASimple@tv-basicstudies"
+    ],
+
+    overrides: {
+
+      "paneProperties.background": "#0b1019",
+      "paneProperties.vertGridProperties.color": "#161c27",
+      "paneProperties.horzGridProperties.color": "#161c27",
+      "scalesProperties.textColor": "#98a5b8"
+
+    }
+
+  });
+
+});
+</script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const footer = document.querySelector(".mv-footer");
+
+  const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        footer.classList.add("show");
+
+        observer.disconnect();
+
+      }
+
+    });
+
+  }, {
+    threshold: 0.15
+  });
+
+  observer.observe(footer);
+
+});
+</script>
+</body>
 </html>

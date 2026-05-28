@@ -41,6 +41,8 @@ const newsItems = [];
    INIT (SINGLE ENTRY POINT)
 ========================= */
 
+
+
 document.addEventListener("DOMContentLoaded", initApp);
 
 async function initApp() {
@@ -53,13 +55,117 @@ async function initApp() {
   renderTicker();
   renderWatchlist();
   selectSymbol(state.activeSymbol);
-
+loadTradingView(state.activeSymbol);
   startLiveUpdates();
   fetchMarketNews();
 
   renderFooter(); // 👈 FOOTER PAGE
 }
+/* =========================
+   TRADINGVIEW
+========================= */
 
+function getTradingViewSymbol(symbol) {
+
+  const map = {
+
+    BTCUSD: "BINANCE:BTCUSDT",
+
+    EURUSD: "FX:EURUSD",
+
+    XAUUSD: "OANDA:XAUUSD",
+
+    SPY: "AMEX:SPY",
+
+    QQQ: "NASDAQ:QQQ",
+
+    AAPL: "NASDAQ:AAPL",
+
+    NVDA: "NASDAQ:NVDA",
+
+    TSLA: "NASDAQ:TSLA",
+
+    MSFT: "NASDAQ:MSFT",
+
+    AMZN: "NASDAQ:AMZN",
+
+    GOOGL: "NASDAQ:GOOGL"
+  };
+
+  return map[symbol] || symbol;
+}
+
+function loadTradingView(symbol = "SPY") {
+
+  const container =
+    document.getElementById("tv_chart");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (typeof TradingView === "undefined") {
+
+    console.error(
+      "TradingView no cargado"
+    );
+
+    return;
+  }
+
+  new TradingView.widget({
+
+    container_id: "tv_chart",
+
+    autosize: true,
+
+    symbol:
+      getTradingViewSymbol(symbol),
+
+    interval: "60",
+
+    timezone: "Europe/Madrid",
+
+    theme: "dark",
+
+    style: "1",
+
+    locale: "es",
+
+    enable_publishing: false,
+
+    allow_symbol_change: true,
+
+    withdateranges: true,
+
+    hide_side_toolbar: false,
+
+    hide_top_toolbar: false,
+
+    save_image: true,
+
+    studies: [
+      "RSI@tv-basicstudies",
+      "MACD@tv-basicstudies",
+      "MASimple@tv-basicstudies"
+    ],
+
+    overrides: {
+
+      "paneProperties.background":
+        "#0b1019",
+
+      "paneProperties.vertGridProperties.color":
+        "rgba(255,255,255,0.04)",
+
+      "paneProperties.horzGridProperties.color":
+        "rgba(255,255,255,0.04)",
+
+      "symbolWatermarkProperties.transparency":
+        92
+    }
+  });
+}
 /* =========================
    HERO
 ========================= */
@@ -262,8 +368,12 @@ function updateUI() {
 ========================= */
 
 function selectSymbol(symbol) {
+
   state.activeSymbol = symbol;
+
   updateUI();
+
+  loadTradingView(symbol);
 }
 
 /* =========================
@@ -375,3 +485,112 @@ function safeNumber(value) {
   return isNaN(n) ? 0 : n;
 }
 safeNumber(asset.change).toFixed(2)
+
+const i18n = {
+  es: {
+    markets: "Mercados",
+    analysis: "Análisis",
+    news: "Actualidad",
+    videos: "Vídeos",
+    contact: "Contacto",
+    hero_title: "Análisis financiero, mercados en vivo y noticias macroeconómicas en una sola terminal.",
+    hero_text: "Centraliza vigilancia de índices, renta variable, criptomonedas, divisas y materias primas."
+  },
+
+  en: {
+    markets: "Markets",
+    analysis: "Analysis",
+    news: "News",
+    videos: "Videos",
+    contact: "Contact",
+    hero_title: "Financial analysis, live markets and macro news in a single terminal.",
+    hero_text: "Centralize monitoring of indices, equities, crypto, FX and commodities."
+  }
+};
+
+function setLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (i18n[lang][key]) {
+      el.textContent = i18n[lang][key];
+    }
+  });
+
+  localStorage.setItem("lang", lang);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("lang") || "es";
+  setLanguage(savedLang);
+});
+
+/* =========================================
+   🌍 MULTI-IDIOMA (AISLADO)
+   - No interfiere con el resto del script
+========================================= */
+
+const I18N = (() => {
+
+  const dictionary = {
+    es: {
+      markets: "Mercados",
+      analysis: "Análisis",
+      news: "Actualidad",
+      videos: "Vídeos",
+      contact: "Contacto",
+      hero_title: "Análisis financiero, mercados en vivo y noticias macroeconómicas en una sola terminal.",
+      hero_text: "Centraliza vigilancia de índices, renta variable, criptomonedas, divisas y materias primas en una interfaz profesional."
+    },
+
+    en: {
+      markets: "Markets",
+      analysis: "Analysis",
+      news: "News",
+      videos: "Videos",
+      contact: "Contact",
+      hero_title: "Financial analysis, live markets and macroeconomic news in a single terminal.",
+      hero_text: "Centralized monitoring of indices, equities, cryptocurrencies, FX and commodities in a professional interface."
+    }
+  };
+
+  function setLanguage(lang) {
+
+    const dict = dictionary[lang];
+    if (!dict) return;
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+
+      const key = el.getAttribute("data-i18n");
+
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+
+    });
+
+    localStorage.setItem("mv_lang", lang);
+  }
+
+  function init() {
+
+    const saved = localStorage.getItem("mv_lang") || "es";
+
+    setLanguage(saved);
+
+  }
+
+  return {
+    setLanguage,
+    init
+  };
+
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
+  I18N.init();
+});
+
+I18N.setLanguage("en");
+window.I18N = I18N;
+console.log(I18N);
+console.log(document.querySelectorAll("[data-i18n]").length);
