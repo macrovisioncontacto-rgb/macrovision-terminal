@@ -10,7 +10,7 @@ const marketData = [
   { symbol: "AMZN", name: "Amazon", price: 184.91, change: 0.44, volatility: "Media", liquidity: "Alta", range: 1.7 },
   { symbol: "GOOGL", name: "Alphabet", price: 176.22, change: 0.31, volatility: "Media", liquidity: "Alta", range: 1.3 },
   { symbol: "BTCUSD", name: "Bitcoin", price: 68420, change: 1.86, volatility: "Alta", liquidity: "Alta", range: 4.2 },
-  { symbol: "EURUSD", name: "Euro / Dolar", price: 1.0842, change: -0.12, volatility: "Baja", liquidity: "Alta", range: 0.5 },
+  { symbol: "EURUSD", name: "Euro / Dólar", price: 1.0842, change: -0.12, volatility: "Baja", liquidity: "Alta", range: 0.5 },
   { symbol: "XAUUSD", name: "Oro", price: 2352.6, change: 0.38, volatility: "Media", liquidity: "Alta", range: 1.1 },
   { symbol: "SPY", name: "S&P 500 ETF", price: 529.11, change: 0.57, volatility: "Media", liquidity: "Alta", range: 1.0 },
   { symbol: "QQQ", name: "Nasdaq 100 ETF", price: 456.8, change: 0.83, volatility: "Alta", liquidity: "Alta", range: 1.6 }
@@ -19,30 +19,30 @@ const marketData = [
 const localizedNews = {
   es: [
     {
-      title: "Los mercados ajustan expectativas de tipos antes de nuevos datos de inflacion",
-      source: "MacroVision",
-      summary: "La curva de bonos mantiene una lectura prudente mientras los inversores buscan confirmacion en salarios, energia y consumo.",
+      title: "Los mercados ajustan expectativas de tipos antes de nuevos datos de inflación",
+      source: "Macrovisión",
+      summary: "La curva de bonos mantiene una lectura prudente mientras los inversores buscan confirmación en salarios, energía y consumo.",
       body: [
-        "El mercado llega a la semana con una posicion mas selectiva. Los activos de riesgo mantienen soporte, pero la sensibilidad a cualquier sorpresa de inflacion sigue siendo elevada.",
-        "En este entorno, los equipos de gestion suelen vigilar la pendiente de la curva, el dolar y la reaccion de sectores defensivos para calibrar si el movimiento tiene continuidad."
+        "El mercado llega a la semana con una posición más selectiva. Los activos de riesgo mantienen soporte, pero la sensibilidad a cualquier sorpresa de inflación sigue siendo elevada.",
+        "En este entorno, los equipos de gestión suelen vigilar la pendiente de la curva, el dólar y la reacción de sectores defensivos para calibrar si el movimiento tiene continuidad."
       ]
     },
     {
-      title: "La rotacion sectorial favorece calidad y balances solidos",
-      source: "MacroVision",
-      summary: "Tecnologia de alta capitalizacion y salud concentran parte del flujo, mientras energia y financieras muestran mayor dispersion.",
+      title: "La rotación sectorial favorece calidad y balances sólidos",
+      source: "Macrovisión",
+      summary: "Tecnología de alta capitalización y salud concentran parte del flujo, mientras energía y financieras muestran mayor dispersión.",
       body: [
-        "La lectura sectorial apunta a una preferencia por companias con margenes resilientes, liquidez y visibilidad de beneficios.",
-        "La clave para las proximas sesiones sera distinguir entre toma de beneficios tactica y deterioro real del apetito por riesgo."
+        "La lectura sectorial apunta a una preferencia por compañías con márgenes resilientes, liquidez y visibilidad de beneficios.",
+        "La clave para las próximas sesiones será distinguir entre toma de beneficios táctica y deterioro real del apetito por riesgo."
       ]
     },
     {
-      title: "El dolar y los rendimientos vuelven al centro del tablero macro",
-      source: "MacroVision",
+      title: "El dólar y los rendimientos vuelven al centro del tablero macro",
+      source: "Macrovisión",
       summary: "Divisas y deuda soberana siguen marcando el tono para materias primas, emergentes y valoraciones de crecimiento.",
       body: [
-        "Los movimientos del dolar estan condicionando la lectura de commodities y activos internacionales. Un rebote sostenido podria endurecer las condiciones financieras.",
-        "Para inversores de corto plazo, la confirmacion suele llegar con volumen, ruptura de niveles y consistencia entre renta fija y renta variable."
+        "Los movimientos del dólar están condicionando la lectura de commodities y activos internacionales. Un rebote sostenido podría endurecer las condiciones financieras.",
+        "Para inversores de corto plazo, la confirmación suele llegar con volumen, ruptura de niveles y consistencia entre renta fija y renta variable."
       ]
     }
   ],
@@ -95,8 +95,8 @@ const localizedEvents = {
 const localizedVideos = {
   es: [
     { title: "Resumen macro semanal", meta: "Briefing editorial", url: "https://www.youtube.com/embed?listType=search&list=Noticias%20MacroVision%20mercados" },
-    { title: "Claves para vigilar indices", meta: "Analisis tecnico", url: "https://www.youtube.com/embed?listType=search&list=MacroVision%20indices%20mercados" },
-    { title: "Dolar, bonos y materias primas", meta: "Contexto global", url: "https://www.youtube.com/embed?listType=search&list=MacroVision%20dolar%20bonos" }
+    { title: "Claves para vigilar índices", meta: "Análisis técnico", url: "https://www.youtube.com/embed?listType=search&list=MacroVision%20indices%20mercados" },
+    { title: "Dólar, bonos y materias primas", meta: "Contexto global", url: "https://www.youtube.com/embed?listType=search&list=MacroVision%20dolar%20bonos" }
   ],
   en: [
     { title: "Weekly macro briefing", meta: "Editorial briefing", url: "https://www.youtube.com/embed?listType=search&list=MacroVision%20markets%20macro%20briefing" },
@@ -109,19 +109,19 @@ const dictionary = {
   es: {
     nav_home: "Inicio",
     nav_markets: "Mercados",
-    nav_analysis: "Analisis",
+    nav_analysis: "Análisis",
     nav_news: "Actualidad",
-    nav_videos: "Videos",
+    nav_videos: "Vídeos",
     nav_contact: "Contacto",
     cta_access: "Solicitar acceso",
     hero_eyebrow: "Terminal profesional de inteligencia macro",
-    hero_title: "Analisis financiero, mercados en vivo y noticias macroeconomicas en una sola terminal.",
-    hero_intro: "Centraliza vigilancia de indices, renta variable, criptomonedas, divisas y materias primas en una interfaz profesional, rapida y orientada a decisiones.",
+    hero_title: "Análisis financiero, mercados en vivo y noticias macroeconómicas en una sola terminal.",
+    hero_intro: "Centraliza vigilancia de índices, renta variable, criptomonedas, divisas y materias primas en una interfaz profesional, rápida y orientada a decisiones.",
     hero_primary: "Ver terminal",
-    hero_secondary: "Explorar analisis",
-    session_label: "Sesion",
+    hero_secondary: "Explorar análisis",
+    session_label: "Sesión",
     risk_label: "Riesgo",
-    signal_label: "Senal principal",
+    signal_label: "Señal principal",
     session_closed: "Mercados cerrados",
     session_europe_us: "Europa + Wall Street",
     session_us: "Wall Street abierto",
@@ -130,11 +130,11 @@ const dictionary = {
     signal_active: "Momentum activo",
     markets_eyebrow: "Mercados",
     markets_title: "Panel operativo de mercados en vivo",
-    markets_intro: "Consulta activos financieros, graficos, volatilidad, liquidez y rotacion sectorial desde un entorno orientado a seguimiento profesional.",
-    live_pill: "Datos en vivo cuando la API esta disponible",
+    markets_intro: "Consulta activos financieros, gráficos, volatilidad, liquidez y rotación sectorial desde un entorno orientado a seguimiento profesional.",
+    live_pill: "Datos en vivo cuando la API está disponible",
     selected_asset: "Activo seleccionado",
-    chart_loading: "Cargando grafico",
-    chart_loading_text: "El panel se activara en cuanto TradingView este disponible.",
+    chart_loading: "Cargando gráfico",
+    chart_loading_text: "El panel se activará en cuanto TradingView esté disponible.",
     metric_volatility: "Volatilidad",
     metric_momentum: "Momentum",
     metric_liquidity: "Liquidez",
@@ -146,73 +146,73 @@ const dictionary = {
     momentum_negative: "Defensivo",
     watchlist_kicker: "Lista de seguimiento",
     watchlist_title: "Activos vigilados",
-    symbol_label: "Simbolo",
+    symbol_label: "Símbolo",
     symbol_placeholder: "Ej. SPY, EURUSD",
     heatmap_kicker: "Mapa sectorial",
     heatmap_title: "Mapa de calor",
-    sector_tech: "Tecnologia",
+    sector_tech: "Tecnología",
     sector_health: "Salud",
-    sector_energy: "Energia",
+    sector_energy: "Energía",
     sector_financials: "Finanzas",
     sector_industrials: "Industria",
     sector_consumer: "Consumo",
-    analysis_eyebrow: "Analisis",
-    analysis_title: "Analisis macroeconomico y tecnico",
-    analysis_intro: "Lecturas de inflacion, bancos centrales, rotacion de cartera y niveles tecnicos relevantes para interpretar el contexto de mercado.",
+    analysis_eyebrow: "Análisis",
+    analysis_title: "Análisis macroeconómico y técnico",
+    analysis_intro: "Lecturas de inflación, bancos centrales, rotación de cartera y niveles técnicos relevantes para interpretar el contexto de mercado.",
     tag_macro: "Macro",
     tag_risk: "Riesgo",
-    tag_technical: "Tecnico",
-    insight_macro_title: "Inflacion y bancos centrales",
-    insight_macro_text: "El mercado descuenta una senda de tipos mas estable. La clave esta en salarios, energia y expectativas de crecimiento.",
-    insight_risk_title: "Rotacion de cartera",
-    insight_risk_text: "El flujo alterna entre tecnologia de alta capitalizacion y sectores defensivos mientras se ajustan las primas de riesgo.",
+    tag_technical: "Técnico",
+    insight_macro_title: "Inflación y bancos centrales",
+    insight_macro_text: "El mercado descuenta una senda de tipos más estable. La clave está en salarios, energía y expectativas de crecimiento.",
+    insight_risk_title: "Rotación de cartera",
+    insight_risk_text: "El flujo alterna entre tecnología de alta capitalización y sectores defensivos mientras se ajustan las primas de riesgo.",
     insight_technical_title: "Niveles a vigilar",
-    insight_technical_text: "La reaccion en soportes semanales y rupturas con volumen ayuda a separar ruido intradia de movimiento direccional.",
+    insight_technical_text: "La reacción en soportes semanales y rupturas con volumen ayuda a separar ruido intradía de movimiento direccional.",
     news_eyebrow: "Actualidad",
-    news_title: "Noticias macroeconomicas y briefing de mercado",
-    news_intro: "Titulares desarrollados como sintesis editorial propia, con referencias publicas y notas de atribucion para una lectura responsable.",
+    news_title: "Noticias macroeconómicas y briefing de mercado",
+    news_intro: "Titulares desarrollados como síntesis editorial propia, con referencias públicas y notas de atribución para una lectura responsable.",
     refresh_news: "Actualizar",
-    news_status_pending: "Ultima actualizacion: pendiente",
+    news_status_pending: "Última actualización: pendiente",
     news_status_loading: "Actualizando noticias...",
-    news_status_updated: "Ultima actualizacion:",
-    news_status_fallback: "Mostrando briefing editorial local. La API no esta disponible ahora mismo.",
+    news_status_updated: "Última actualización:",
+    news_status_fallback: "Mostrando briefing editorial local. La API no está disponible ahora mismo.",
     calendar_kicker: "Calendario",
     calendar_title: "Eventos clave",
     event_impact: "Impacto",
     articles_eyebrow: "Lectura ampliada",
-    articles_title: "Articulos de actualidad",
+    articles_title: "Artículos de actualidad",
     article_empty_tag: "Selecciona una noticia",
     article_empty_title: "Abre cualquier titular del briefing para leer el desarrollo completo.",
-    article_empty_text: "Cada articulo esta redactado como sintesis editorial propia y contiene una nota de atribucion para evitar reproducir material protegido.",
+    article_empty_text: "Cada artículo está redactado como síntesis editorial propia y contiene una nota de atribución para evitar reproducir material protegido.",
     source_open: "Abrir fuente",
-    article_note: "Sintesis editorial con finalidad informativa. Contrasta siempre datos sensibles con fuentes oficiales o profesionales cualificados.",
+    article_note: "Síntesis editorial con finalidad informativa. Contrasta siempre datos sensibles con fuentes oficiales o profesionales cualificados.",
     videos_eyebrow: "Canal de YouTube",
-    videos_title: "Ultimos videos de Noticias MacroVision",
-    videos_intro: "Acceso directo al canal oficial, videos recientes, shorts y emisiones para ampliar el seguimiento de actualidad financiera.",
+    videos_title: "Últimos vídeos de Noticias Macrovisión",
+    videos_intro: "Acceso directo al canal oficial, vídeos recientes, shorts y emisiones para ampliar el seguimiento de actualidad financiera.",
     open_channel: "Abrir canal",
-    video_placeholder_title: "Selecciona un video",
-    video_placeholder_text: "Accede a los ultimos videos, shorts y directos publicados en el canal Noticias MacroVision.",
+    video_placeholder_title: "Selecciona un vídeo",
+    video_placeholder_text: "Accede a los últimos vídeos, shorts y directos publicados en el canal Noticias Macrovisión.",
     video_list_kicker: "Publicaciones recientes",
     video_list_title: "Lista editorial",
-    youtube_note: "Seleccion editorial preparada para integrarse con el canal oficial.",
+    youtube_note: "Selección editorial preparada para integrarse con el canal oficial.",
     contact_eyebrow: "Acceso profesional",
-    contact_title: "Prepara tu mesa de analisis con MacroVision.",
+    contact_title: "Prepara tu mesa de análisis con Macrovisión.",
     contact_intro: "Solicita una demo, configura tus activos principales y define alertas para tu operativa diaria.",
     form_name: "Nombre",
     form_name_placeholder: "Tu nombre",
-    form_email: "Correo electronico",
+    form_email: "Correo electrónico",
     form_email_placeholder: "nombre@empresa.com",
     form_submit: "Enviar solicitud",
     form_success: "Solicitud registrada. Te contactaremos pronto.",
     legal_note_title: "Aviso informativo",
-    legal_note_text: "La informacion publicada en MacroVision tiene caracter exclusivamente informativo y educativo. No constituye asesoramiento financiero, recomendacion de inversion, oferta de compra o venta de instrumentos financieros ni sustituto de una evaluacion profesional independiente.",
-    footer_brand_text: "Terminal profesional de mercados, analisis macroeconomico y seguimiento financiero en tiempo real.",
+    legal_note_text: "La información publicada en Macrovisión tiene carácter exclusivamente informativo y educativo. No constituye asesoramiento financiero, recomendación de inversión, oferta de compra o venta de instrumentos financieros ni sustituto de una evaluación profesional independiente.",
+    footer_brand_text: "Terminal profesional de mercados, análisis macroeconómico y seguimiento financiero en tiempo real.",
     footer_markets_title: "Mercados",
     footer_news: "Noticias",
     footer_legal_title: "Legal",
     footer_privacy: "Privacidad",
     footer_legal_notice: "Aviso legal",
-    footer_country: "Espana"
+    footer_country: "España"
   },
   en: {
     nav_home: "Home",
@@ -435,7 +435,7 @@ function setLanguage(lang) {
   document.documentElement.lang = state.currentLang;
   document.title = state.currentLang === "en"
     ? "MacroVision | Financial analysis and live markets"
-    : "MacroVision | Analisis financiero y mercados en vivo";
+    : "Macrovisión | Análisis financiero y mercados en vivo";
 
   if (!state.liveNews.length) state.news = getLocalizedNews();
   renderHeroData();
@@ -577,7 +577,7 @@ async function fetchSingleSymbol(symbol) {
     asset.price = data.c;
     asset.change = data.pc ? ((data.c - data.pc) / data.pc) * 100 : 0;
   } catch (error) {
-    console.warn("No se pudieron actualizar datos de mercado", symbol, error);
+    console.warn("No se pudieron actualizar los datos de mercado", symbol, error);
   }
 }
 
@@ -688,14 +688,14 @@ async function fetchMarketNews() {
     const data = await response.json();
     const liveNews = Array.isArray(data) ? data.slice(0, 6).map((item) => ({
       title: item.headline || (state.currentLang === "en" ? "Market headline" : "Titular de mercado"),
-      source: item.source || (state.currentLang === "en" ? "Public source" : "Fuente publica"),
+      source: item.source || (state.currentLang === "en" ? "Public source" : "Fuente pública"),
       summary: item.summary || (state.currentLang === "en" ? "Summary not available." : "Resumen no disponible."),
       url: item.url,
       body: [
         item.summary || (state.currentLang === "en" ? "The source did not provide an expanded summary." : "La noticia no incluye un resumen ampliado desde la fuente consultada."),
         state.currentLang === "en"
           ? "MacroVision shows this content as an informational reference and recommends checking the original source before making decisions."
-          : "MacroVision muestra este contenido como referencia informativa y recomienda contrastarlo con la fuente original antes de tomar decisiones."
+          : "Macrovisión muestra este contenido como referencia informativa y recomienda contrastarlo con la fuente original antes de tomar decisiones."
       ],
       isLive: true
     })) : [];
@@ -727,7 +727,7 @@ function renderNews() {
 
     const source = document.createElement("span");
     source.className = "news-source";
-    source.textContent = item.source || "MacroVision";
+    source.textContent = item.source || (state.currentLang === "es" ? "Macrovisión" : "MacroVision");
 
     const title = document.createElement("strong");
     title.textContent = item.title;
@@ -751,7 +751,7 @@ function renderArticle(item) {
     : "";
 
   article.innerHTML = `
-    <span class="tag">${escapeHtml(item.source || "MacroVision")}</span>
+    <span class="tag">${escapeHtml(item.source || (state.currentLang === "es" ? "Macrovisión" : "MacroVision"))}</span>
     <h3>${escapeHtml(item.title)}</h3>
     <div class="article-body">
       ${(item.body || [item.summary]).map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}
