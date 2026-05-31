@@ -1,7 +1,7 @@
 {
   "name": "MacroVision",
   "short_name": "MacroVision",
-  "description": "Terminal profesional de análisis financiero, mercados en vivo y noticias macroeconómicas.",
+  "description": "Terminal profesional de analisis financiero, mercados en vivo y noticias macroeconomicas.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#080b12",
