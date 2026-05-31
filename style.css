@@ -457,7 +457,7 @@ h3 {
   font-weight: 800;
 }
 
-.live-pill span {
+.live-pill > span:first-child {
   width: 8px;
   height: 8px;
   border-radius: 999px;
