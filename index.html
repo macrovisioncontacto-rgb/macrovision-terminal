@@ -1,53 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>MacroVision | Análisis financiero y mercados en vivo</title>
-
-  <meta
-    name="description"
-    content="MacroVision es una terminal profesional de análisis financiero, mercados en vivo, noticias macroeconómicas y seguimiento de activos."
-  >
-
+  <title>MacroVision | Analisis financiero y mercados en vivo</title>
+  <meta name="description" content="MacroVision es una terminal profesional de analisis financiero, mercados en vivo, noticias macroeconomicas y seguimiento de activos.">
   <meta name="theme-color" content="#080b12">
-
-  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-  <!-- TRADINGVIEW -->
-  <script
-    src="https://s3.tradingview.com/tv.js"
-    defer
-  ></script>
-
-  <!-- SEO -->
+  <link rel="manifest" href="site.webmanifest">
   <meta property="og:title" content="MacroVision">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://noticias.macrovision-contacto.workers.dev/">
   <meta property="og:image" content="assets/og-image.png">
-
-  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"MacroVision",
-    "url":"https://noticias.macrovision-contacto.workers.dev/"
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MacroVision",
+    "url": "https://noticias.macrovision-contacto.workers.dev/"
   }
   </script>
-
+  <script src="https://s3.tradingview.com/tv.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
   <div class="ticker" aria-label="Resumen de mercado">
@@ -63,62 +40,56 @@
       </span>
     </a>
 
-    
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="site-nav" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
 
-    <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
-      <a class="nav-link active" href="#inicio">Inicio</a>
-      <a class="nav-link" href="#mercados">Mercados</a>
-      <a class="nav-link" href="#analisis">Análisis</a>
-      <a class="nav-link" href="#actualidad">Actualidad</a>
-      <a class="nav-link" href="#videos">Vídeos</a>
-      <a class="nav-link" href="#contacto">Contacto</a>
+    <nav class="site-nav" id="site-nav" aria-label="Navegacion principal">
+      <a class="nav-link active" href="#inicio" data-i18n="nav_home">Inicio</a>
+      <a class="nav-link" href="#mercados" data-i18n="nav_markets">Mercados</a>
+      <a class="nav-link" href="#analisis" data-i18n="nav_analysis">Analisis</a>
+      <a class="nav-link" href="#actualidad" data-i18n="nav_news">Actualidad</a>
+      <a class="nav-link" href="#videos" data-i18n="nav_videos">Videos</a>
+      <a class="nav-link" href="#contacto" data-i18n="nav_contact">Contacto</a>
     </nav>
 
     <div class="header-actions">
-        <button class="button button-ghost" type="button" data-scroll="#videos">Vídeos</button>
-        <button class="button button-primary" type="button" data-scroll="#contacto">Solicitar acceso</button>
-
-
-  <button onclick="I18N.setLanguage('es')">ES</button>
-  <button onclick="I18N.setLanguage('en')">EN</button>
-
+      <button class="button button-ghost" type="button" data-scroll="#videos" data-i18n="nav_videos">Videos</button>
+      <button class="button button-primary" type="button" data-scroll="#contacto">Solicitar acceso</button>
+      <div class="lang-switch" aria-label="Selector de idioma">
+        <button type="button" data-lang="es" aria-label="Cambiar a espanol">ES</button>
+        <button type="button" data-lang="en" aria-label="Switch to English">EN</button>
+      </div>
     </div>
   </header>
+
   <main>
     <section class="hero section-shell" id="inicio">
       <div class="hero-copy">
         <p class="eyebrow">Terminal profesional de inteligencia macro</p>
-        <h1 data-i18n="hero_title">
-  Análisis financiero...
-</h1>
-        <p class="hero-intro" data-i18n="hero_intro">
-  Accede a mercados en vivo, análisis macroeconómico, noticias y seguimiento de activos desde un entorno orientado a profesionales.
-</p>
-
+        <h1 data-i18n="hero_title">Analisis financiero, mercados en vivo y noticias macroeconomicas en una sola terminal.</h1>
+        <p class="hero-intro" data-i18n="hero_intro">Centraliza vigilancia de indices, renta variable, criptomonedas, divisas y materias primas en una interfaz profesional, rapida y orientada a decisiones.</p>
         <div class="hero-actions">
           <button class="button button-primary" type="button" data-scroll="#mercados">Ver terminal</button>
-          <button class="button button-secondary" type="button" data-scroll="#analisis">Explorar análisis</button>
+          <button class="button button-secondary" type="button" data-scroll="#analisis">Explorar analisis</button>
         </div>
       </div>
 
       <div class="hero-panel" aria-label="Resumen ejecutivo">
-        <div class="session-card">
-          <span>Sesión</span>
+        <article class="session-card">
+          <span>Sesion</span>
           <strong id="session-state">Europa abierta</strong>
-        </div>
-        <div class="session-card">
+        </article>
+        <article class="session-card">
           <span>Riesgo</span>
           <strong id="risk-state">Moderado</strong>
-        </div>
-        <div class="session-card">
-          <span>Señal principal</span>
-          <strong id="signal-state">Rotación defensiva</strong>
-        </div>
+        </article>
+        <article class="session-card">
+          <span>Senal principal</span>
+          <strong id="signal-state">Rotacion defensiva</strong>
+        </article>
       </div>
     </section>
 
@@ -127,9 +98,9 @@
         <div>
           <p class="eyebrow">Mercados</p>
           <h2>Panel operativo de mercados en vivo</h2>
-          <p class="section-intro">Consulta activos financieros, gráficos, volatilidad, liquidez y rotación sectorial desde un entorno orientado a seguimiento profesional.</p>
+          <p class="section-intro">Consulta activos financieros, graficos, volatilidad, liquidez y rotacion sectorial desde un entorno orientado a seguimiento profesional.</p>
         </div>
-        <div class="live-pill"><span></span> Datos simulados en vivo</div>
+        <div class="live-pill"><span></span> Datos en vivo cuando la API esta disponible</div>
       </div>
 
       <div class="dashboard-grid">
@@ -137,20 +108,24 @@
           <div class="panel-header">
             <div>
               <p class="panel-kicker">Activo seleccionado</p>
-              <h3 id="chart-title"><span id="selected-symbol">AAPL</span> / USD</h3>
+              <h3 id="chart-title"><span id="selected-symbol">SPY</span> / USD</h3>
             </div>
             <div class="asset-meta">
-              <strong id="selected-price">$189.32</strong>
-              <span id="selected-change" class="positive">+1.24%</span>
+              <strong id="selected-price">$0.00</strong>
+              <span id="selected-change" class="neutral">0.00%</span>
             </div>
           </div>
 
-<div class="chart-wrap">
+          <div class="chart-wrap">
+            <div id="tv_chart" class="chart-surface">
+              <div class="chart-fallback">
+                <strong>Cargando grafico</strong>
+                <span>El panel se activara en cuanto TradingView este disponible.</span>
+              </div>
+            </div>
+          </div>
 
-  <div id="tv_chart" class="chart-surface"></div>
-
-</div>
-          <div class="metrics" aria-label="Métricas del activo">
+          <div class="metrics" aria-label="Metricas del activo">
             <article class="metric">
               <span>Volatilidad</span>
               <strong id="metric-volatility">Media</strong>
@@ -165,7 +140,7 @@
             </article>
             <article class="metric">
               <span>Rango diario</span>
-              <strong id="metric-range">1.8%</strong>
+              <strong id="metric-range">1.0%</strong>
             </article>
           </div>
         </section>
@@ -179,9 +154,9 @@
               </div>
             </div>
             <form class="watchlist-form" id="watchlist-form">
-              <label class="sr-only" for="symbol-input">Símbolo</label>
-              <input id="symbol-input" name="symbol" type="text" maxlength="12" placeholder="Ej. SPY, EURUSD">
-              <button class="button button-icon" type="submit" aria-label="Añadir símbolo">+</button>
+              <label class="sr-only" for="symbol-input">Simbolo</label>
+              <input id="symbol-input" name="symbol" type="text" maxlength="12" placeholder="Ej. SPY, EURUSD" autocomplete="off">
+              <button class="button button-icon" type="submit" aria-label="Anadir simbolo">+</button>
             </form>
             <div class="watchlist" id="watchlist-container"></div>
           </section>
@@ -194,9 +169,9 @@
               </div>
             </div>
             <div class="heatmap" id="heatmap">
-              <div class="heat-tile up strong">Tecnología<span>+1.8%</span></div>
+              <div class="heat-tile up strong">Tecnologia<span>+1.8%</span></div>
               <div class="heat-tile up">Salud<span>+0.7%</span></div>
-              <div class="heat-tile down">Energía<span>-0.4%</span></div>
+              <div class="heat-tile down">Energia<span>-0.4%</span></div>
               <div class="heat-tile down strong">Finanzas<span>-1.2%</span></div>
               <div class="heat-tile up">Industria<span>+0.5%</span></div>
               <div class="heat-tile neutral">Consumo<span>0.0%</span></div>
@@ -209,40 +184,37 @@
     <section class="analysis section-shell" id="analisis">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Análisis</p>
-          <h2>Análisis macroeconómico y técnico</h2>
-          <p class="section-intro">Lecturas de inflación, bancos centrales, rotación de cartera y niveles técnicos relevantes para interpretar el contexto de mercado.</p>
+          <p class="eyebrow">Analisis</p>
+          <h2>Analisis macroeconomico y tecnico</h2>
+          <p class="section-intro">Lecturas de inflacion, bancos centrales, rotacion de cartera y niveles tecnicos relevantes para interpretar el contexto de mercado.</p>
         </div>
       </div>
 
       <div class="analysis-grid">
         <article class="panel insight-card">
           <span class="tag">Macro</span>
-          <h3>Inflación y bancos centrales</h3>
-          <p>El mercado descuenta una senda de tipos más estable. La clave está en salarios, energía y expectativas de crecimiento.</p>
+          <h3>Inflacion y bancos centrales</h3>
+          <p>El mercado descuenta una senda de tipos mas estable. La clave esta en salarios, energia y expectativas de crecimiento.</p>
         </article>
         <article class="panel insight-card">
           <span class="tag">Riesgo</span>
-          <h3>Rotación de cartera</h3>
-          <p>El flujo alterna entre tecnología de alta capitalización y sectores defensivos mientras se ajustan las primas de riesgo.</p>
+          <h3>Rotacion de cartera</h3>
+          <p>El flujo alterna entre tecnologia de alta capitalizacion y sectores defensivos mientras se ajustan las primas de riesgo.</p>
         </article>
         <article class="panel insight-card">
-          <span class="tag">Técnico</span>
+          <span class="tag">Tecnico</span>
           <h3>Niveles a vigilar</h3>
-          <p>La reacción en soportes semanales y rupturas con volumen ayuda a separar ruido intradía de movimiento direccional.</p>
+          <p>La reaccion en soportes semanales y rupturas con volumen ayuda a separar ruido intradia de movimiento direccional.</p>
         </article>
       </div>
     </section>
-<div id="news-track" class="news-list"></div>
-<div class="news-status" id="news-status">
-  Última actualización: cargando...
-</div>
+
     <section class="news-section section-shell" id="actualidad">
       <div class="section-heading">
         <div>
           <p class="eyebrow">Actualidad</p>
-          <h2>Noticias macroeconómicas y briefing de mercado</h2>
-          <p class="section-intro">Titulares desarrollados como síntesis editorial propia, con referencias públicas y notas de atribución para una lectura responsable.</p>
+          <h2>Noticias macroeconomicas y briefing de mercado</h2>
+          <p class="section-intro">Titulares desarrollados como sintesis editorial propia, con referencias publicas y notas de atribucion para una lectura responsable.</p>
         </div>
         <button class="button button-secondary" type="button" id="refresh-news">Actualizar</button>
       </div>
@@ -250,6 +222,7 @@
       <div class="news-layout">
         <section class="panel news-panel">
           <div id="news-track" class="news-list"></div>
+          <p class="news-status" id="news-status">Ultima actualizacion: pendiente</p>
         </section>
 
         <section class="panel calendar-panel">
@@ -264,16 +237,14 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">Lectura ampliada</p>
-          <h2>Artículos de actualidad</h2>
+          <h2>Articulos de actualidad</h2>
         </div>
       </div>
 
       <article class="panel article-view" id="article-view">
         <span class="tag">Selecciona una noticia</span>
         <h3>Abre cualquier titular del briefing para leer el desarrollo completo.</h3>
-        <p>
-          Cada artículo está redactado como síntesis editorial propia y contiene una nota de atribución para evitar reproducir material protegido.
-        </p>
+        <p>Cada articulo esta redactado como sintesis editorial propia y contiene una nota de atribucion para evitar reproducir material protegido.</p>
       </article>
     </section>
 
@@ -281,20 +252,18 @@
       <div class="section-heading">
         <div>
           <p class="eyebrow">Canal de YouTube</p>
-          <h2>Últimos vídeos de Noticias MacroVision</h2>
-          <p class="section-intro">Acceso directo al canal oficial, vídeos recientes, shorts y emisiones para ampliar el seguimiento de actualidad financiera.</p>
+          <h2>Ultimos videos de Noticias MacroVision</h2>
+          <p class="section-intro">Acceso directo al canal oficial, videos recientes, shorts y emisiones para ampliar el seguimiento de actualidad financiera.</p>
         </div>
-        <a class="button button-secondary" id="youtube-channel-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-          Abrir canal
-        </a>
+        <a class="button button-secondary" id="youtube-channel-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Abrir canal</a>
       </div>
 
       <div class="video-layout">
         <section class="panel video-feature">
           <div class="video-frame" id="featured-video">
             <div class="video-placeholder">
-              <strong>Selecciona un vídeo</strong>
-              <span>Accede a los últimos vídeos, shorts y directos publicados en el canal Noticias MacroVision.</span>
+              <strong>Selecciona un video</strong>
+              <span>Accede a los ultimos videos, shorts y directos publicados en el canal Noticias MacroVision.</span>
             </div>
           </div>
         </section>
@@ -312,7 +281,7 @@
       <div class="contact-card">
         <div>
           <p class="eyebrow">Acceso profesional</p>
-          <h2>Prepara tu mesa de análisis con MacroVision.</h2>
+          <h2>Prepara tu mesa de analisis con MacroVision.</h2>
           <p>Solicita una demo, configura tus activos principales y define alertas para tu operativa diaria.</p>
         </div>
         <form class="contact-form" id="contact-form">
@@ -321,7 +290,7 @@
             <input name="name" type="text" placeholder="Tu nombre" required>
           </label>
           <label>
-            Correo electrónico
+            Correo electronico
             <input name="email" type="email" placeholder="nombre@empresa.com" required>
           </label>
           <button class="button button-primary" type="submit">Enviar solicitud</button>
@@ -332,151 +301,37 @@
 
     <section class="legal-note section-shell" aria-label="Aviso legal financiero">
       <h2>Aviso informativo</h2>
-      <p>
-        La información publicada en MacroVision tiene carácter exclusivamente informativo y educativo. No constituye asesoramiento financiero, recomendación de inversión, oferta de compra o venta de instrumentos financieros ni sustituto de una evaluación profesional independiente.
-      </p>
+      <p>La informacion publicada en MacroVision tiene caracter exclusivamente informativo y educativo. No constituye asesoramiento financiero, recomendacion de inversion, oferta de compra o venta de instrumentos financieros ni sustituto de una evaluacion profesional independiente.</p>
     </section>
   </main>
-<footer class="site-footer mv-footer">
 
-  <div class="footer-glow"></div>
-
-  <div class="footer-container">
-
-    <div class="footer-column footer-brand">
-      <h3>MacroVision</h3>
-
-      <p>
-        Terminal profesional de mercados, análisis macroeconómico
-        y seguimiento financiero en tiempo real.
-      </p>
-    </div>
-
-    <div class="footer-column footer-links">
-      <h4>Mercados</h4>
-
-      <a href="#mercados">Mercados</a>
-      <a href="#analisis">Análisis</a>
-      <a href="#actualidad">Noticias</a>
-      <a href="#videos">Vídeos</a>
-    </div>
-
-    <div class="footer-column footer-links">
-      <h4>Legal</h4>
-
-      <a href="privacy.html">Privacidad</a>
-      <a href="#">Términos</a>
-      <a href="#">Cookies</a>
-    </div>
-
-    <div class="footer-column footer-contact">
-      <h4>Contacto</h4>
-
-      <p>contacto@macrovision.com</p>
-      <p>España</p>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 MacroVision · Market Intelligence
-  </div>
-
-</footer>
-
-  <script src="script.js" defer></script>
-  <script>
-
-window.addEventListener("load", () => {
-
-  if (typeof TradingView === "undefined") {
-
-    document.getElementById("tv_chart").innerHTML = `
-      <div class="chart-fallback">
-        <strong>Error cargando TradingView</strong>
-        <span>Comprueba conexión o bloqueadores.</span>
+  <footer class="site-footer mv-footer">
+    <div class="footer-glow"></div>
+    <div class="footer-container">
+      <div class="footer-column footer-brand">
+        <h3>MacroVision</h3>
+        <p>Terminal profesional de mercados, analisis macroeconomico y seguimiento financiero en tiempo real.</p>
       </div>
-    `;
-
-    return;
-  }
-
-  new TradingView.widget({
-
-    container_id: "tv_chart",
-
-    autosize: true,
-
-    symbol: "NASDAQ:AAPL",
-
-    interval: "60",
-
-    timezone: "Europe/Madrid",
-
-    theme: "dark",
-
-    style: "1",
-
-    locale: "es",
-
-    toolbar_bg: "#0b1019",
-
-    enable_publishing: false,
-
-    hide_top_toolbar: false,
-
-    hide_side_toolbar: false,
-
-    allow_symbol_change: true,
-
-    withdateranges: true,
-
-    save_image: true,
-
-    studies: [
-      "Volume@tv-basicstudies",
-      "MASimple@tv-basicstudies"
-    ],
-
-    overrides: {
-
-      "paneProperties.background": "#0b1019",
-      "paneProperties.vertGridProperties.color": "#161c27",
-      "paneProperties.horzGridProperties.color": "#161c27",
-      "scalesProperties.textColor": "#98a5b8"
-
-    }
-
-  });
-
-});
-</script>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const footer = document.querySelector(".mv-footer");
-
-  const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        footer.classList.add("show");
-
-        observer.disconnect();
-
-      }
-
-    });
-
-  }, {
-    threshold: 0.15
-  });
-
-  observer.observe(footer);
-
-});
-</script>
+      <div class="footer-column footer-links">
+        <h4>Mercados</h4>
+        <a href="#mercados">Mercados</a>
+        <a href="#analisis">Analisis</a>
+        <a href="#actualidad">Noticias</a>
+        <a href="#videos">Videos</a>
+      </div>
+      <div class="footer-column footer-links">
+        <h4>Legal</h4>
+        <a href="pages/politica-privacidad.html">Privacidad</a>
+        <a href="pages/aviso-legal.html">Aviso legal</a>
+        <a href="pages/cookies.html">Cookies</a>
+      </div>
+      <div class="footer-column footer-contact">
+        <h4>Contacto</h4>
+        <p>contacto@macrovision.com</p>
+        <p>Espana</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 MacroVision · Market Intelligence</div>
+  </footer>
 </body>
 </html>
