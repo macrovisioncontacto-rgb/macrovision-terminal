@@ -1,0 +1,10 @@
+.git
+.github
+.agents
+.codex
+.wrangler
+node_modules
+video
+macrovision_intro_v4_extended.html
+*.py
+*.ps1
