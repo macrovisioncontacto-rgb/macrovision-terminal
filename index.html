@@ -11,8 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-v2.png">
-<link rel="apple-touch-icon" href="assets/favicon-v2.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/style.css">
+<script src="/script.js" defer></script>
   <meta property="og:title" content="Macrovisión | Inteligencia financiera global">
   <meta property="og:description" content="Terminal profesional de análisis financiero, mercados en vivo y noticias macroeconómicas.">
   <meta property="og:type" content="website">
@@ -32,10 +34,9 @@
   "@type":"Organization",
   "name":"MacroVision",
   "url":"https://noticias.macrovision-contacto.workers.dev/",
-  "logo":"https://noticias.macrovision-contacto.workers.dev/assets/logo.png"
+  "logo":"https://noticias.macrovision-contacto.workers.dev/assets/logo-macrovision-v2.png"
 }
 </script>
-  </script>
   <script src="https://s3.tradingview.com/tv.js" defer></script>
   <script src="script.js" defer></script>
 </head>
@@ -84,8 +85,13 @@
 
   <main>
     <section class="hero section-shell" id="inicio">
-      <div class="hero-copy">
-        <img class="hero-logo" src="assets/logo-macrovision-v2.jpg" alt="Macrovisión" width="360" height="203" decoding="async" fetchpriority="high">
+      <div class="hero-copy"> <img
+  class="hero-logo"
+  src="assets/logo-macrovision-v2.jpg"
+  alt="Logo Macrovisión"
+  loading="eager"
+  decoding="async">
+
         <p class="eyebrow" data-i18n="hero_eyebrow">Terminal profesional de inteligencia macro</p>
         <h1 data-i18n="hero_title">Análisis financiero, mercados en vivo y noticias macroeconómicas en una sola terminal.</h1>
         <p class="hero-intro" data-i18n="hero_intro">Centraliza vigilancia de índices, renta variable, criptomonedas, divisas y materias primas en una interfaz profesional, rápida y orientada a decisiones.</p>
