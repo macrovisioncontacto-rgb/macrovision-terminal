@@ -910,3 +910,182 @@ window.MacroVision = {
   setLanguage,
   selectSymbol
 };
+const smartMoneyData = [
+
+{
+name:"Warren Buffett",
+fund:"Berkshire Hathaway",
+holdings:[
+["Apple",22],
+["American Express",17],
+["Coca-Cola",12],
+["Bank of America",10],
+["Chevron",7]
+]
+},
+
+{
+name:"Bill Ackman",
+fund:"Pershing Square",
+holdings:[
+["Uber",19],
+["Alphabet",18],
+["Hilton",16],
+["Chipotle",14],
+["Restaurant Brands",11]
+]
+},
+
+{
+name:"Michael Burry",
+fund:"Scion Capital",
+holdings:[
+["Alibaba",18],
+["JD.com",14],
+["Baidu",12],
+["Estée Lauder",10],
+["HCA Healthcare",9]
+]
+}
+
+];
+
+renderSmartMoney();
+
+function renderSmartMoney(){
+
+const grid =
+document.getElementById("smart-grid");
+
+if(!grid) return;
+
+grid.innerHTML="";
+
+smartMoneyData.forEach(investor=>{
+
+const card=document.createElement("div");
+
+card.className="investor-card";
+
+card.innerHTML=`
+
+<div class="investor-header">
+
+<div>
+
+<div class="investor-name">
+${investor.name}
+</div>
+
+<div>
+${investor.fund}
+</div>
+
+</div>
+
+</div>
+
+${investor.holdings.map(h=>`
+
+<div class="holding">
+
+<div class="holding-label">
+
+<span>${h[0]}</span>
+
+<span>${h[1]}%</span>
+
+</div>
+
+<div class="holding-bar">
+
+<div
+class="holding-fill"
+style="width:${h[1]}%">
+</div>
+
+</div>
+
+</div>
+
+`).join("")}
+
+`;
+
+grid.appendChild(card);
+
+});
+
+renderConsensus();
+
+renderAlerts();
+
+}
+function renderConsensus(){
+
+const consensus = [
+
+["Microsoft",95],
+["Amazon",92],
+["Alphabet",91],
+["Meta",89],
+["Visa",84]
+
+];
+
+const container =
+document.getElementById(
+"consensus-list"
+);
+
+container.innerHTML="";
+
+consensus.forEach(stock=>{
+
+container.innerHTML += `
+
+<div class="consensus-stock">
+
+<span>${stock[0]}</span>
+
+<strong>${stock[1]}</strong>
+
+</div>
+
+`;
+
+});
+
+}
+function renderAlerts(){
+
+const alerts=[
+
+"Buffett reduce Chevron",
+
+"Ackman aumenta Uber",
+
+"Scion incrementa Alibaba",
+
+"Nueva posición detectada en Alphabet"
+
+];
+
+const container=
+document.getElementById(
+"smart-alerts"
+);
+
+container.innerHTML="";
+
+alerts.forEach(alert=>{
+
+container.innerHTML +=
+
+`<div class="smart-alert">
+🚨 ${alert}
+</div>`;
+
+});
+
+}
