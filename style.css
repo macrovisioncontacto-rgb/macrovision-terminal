@@ -373,6 +373,15 @@ h3 {
   min-width: 0;
 }
 
+.hero-logo {
+  display: block;
+  width: min(360px, 72vw);
+  height: auto;
+  margin-bottom: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.32));
+}
+
 .hero-intro {
   max-width: 760px;
   margin-bottom: 28px;
@@ -1147,6 +1156,11 @@ input:focus {
 
   .hero {
     padding: 42px 0 22px;
+  }
+
+  .hero-logo {
+    width: min(300px, 78vw);
+    margin-bottom: 18px;
   }
 
   h1 {
