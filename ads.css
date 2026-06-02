@@ -1,0 +1,225 @@
+/* ============================================
+   Google Ads Styling
+   ============================================ */
+
+.ad-container {
+  margin: 16px 0;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 180ms ease;
+}
+
+.ad-container:hover {
+  border-color: var(--line-strong);
+}
+
+/* Banner Top Ad */
+.ad-banner-top {
+  display: block;
+  width: 100%;
+  margin: 24px 0;
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.5), rgba(10, 14, 24, 0.5));
+  border: 1px solid rgba(221, 182, 92, 0.2);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.ad-banner-top ins.adsbygoogle {
+  display: block;
+  min-height: 90px;
+}
+
+/* Sidebar Ads */
+.ad-sidebar,
+.ad-news-sidebar {
+  display: block;
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 12px;
+  background: linear-gradient(145deg, rgba(17, 24, 39, 0.6), rgba(10, 14, 24, 0.6));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.ad-sidebar ins.adsbygoogle,
+.ad-news-sidebar ins.adsbygoogle {
+  display: block;
+  min-height: 250px;
+}
+
+/* Sticky Bottom Ad */
+.ad-sticky-bottom {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 300px;
+  z-index: 20;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(10, 14, 24, 0.95));
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  animation: slideInRight 0.3s ease-out;
+}
+
+.ad-sticky-bottom ins.adsbygoogle {
+  display: block;
+  min-height: 250px;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(360px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Close button for sticky ad (optional) */
+.ad-sticky-bottom .ad-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  transition: background 180ms ease;
+  z-index: 21;
+}
+
+.ad-sticky-bottom .ad-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Tablet / Small screens */
+@media (max-width: 1024px) {
+  .ad-sidebar,
+  .ad-news-sidebar {
+    display: block;
+  }
+
+  .ad-sidebar ins.adsbygoogle,
+  .ad-news-sidebar ins.adsbygoogle {
+    min-height: 280px;
+  }
+
+  .ad-sticky-bottom {
+    width: 280px;
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+  .ad-banner-top {
+    margin: 16px 0;
+    padding: 12px;
+  }
+
+  .ad-banner-top ins.adsbygoogle {
+    min-height: 100px;
+  }
+
+  /* Hide sidebar ads on mobile */
+  .ad-sidebar,
+  .ad-news-sidebar {
+    display: none;
+  }
+
+  /* Convert sticky ad to bottom banner on mobile */
+  .ad-sticky-bottom {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin: 16px 0;
+    bottom: auto;
+    right: auto;
+    box-shadow: none;
+  }
+
+  .ad-sticky-bottom ins.adsbygoogle {
+    min-height: 250px;
+  }
+
+  .ad-sticky-bottom .ad-close {
+    display: none;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .ad-banner-top {
+    margin: 12px 0;
+    padding: 8px;
+  }
+
+  .ad-banner-top ins.adsbygoogle {
+    min-height: 280px;
+  }
+
+  .ad-sticky-bottom {
+    margin: 12px 0;
+  }
+}
+
+/* Ad loading state */
+.ad-container.loading {
+  opacity: 0.7;
+}
+
+.ad-container.error {
+  opacity: 0.5;
+  border-color: var(--red);
+}
+
+/* Accessibility: Focus visible for keyboard navigation */
+.ad-container:focus-within {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Animation for ads appearing */
+@keyframes fadeInAds {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ad-container ins.adsbygoogle {
+  animation: fadeInAds 0.4s ease-out;
+}
+
+/* Ensure ads don't overflow */
+.ad-container {
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.ad-banner-top ins.adsbygoogle,
+.ad-sidebar ins.adsbygoogle,
+.ad-news-sidebar ins.adsbygoogle,
+.ad-sticky-bottom ins.adsbygoogle {
+  width: 100% !important;
+  max-width: 100% !important;
+}
