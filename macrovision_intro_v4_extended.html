@@ -1,0 +1,397 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#c9a84c;--gold-b:#e8c96a;--gold-dim:rgba(201,168,76,0.3);--gold-glow:rgba(201,168,76,0.07);--bg:#080b12;--red:#e24b4a;}
+#stage{width:100%;aspect-ratio:16/9;background:var(--bg);overflow:hidden;position:relative;font-family:'Inter',sans-serif;border-radius:12px;}
+.grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(201,168,76,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.045) 1px,transparent 1px);background-size:52px 52px;}
+#pbar{position:absolute;bottom:0;left:0;height:2px;background:var(--gold);width:0;z-index:99;transition:width 0.08s linear;}
+.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:200;background:rgba(8,11,18,0.8);}
+.play-ring{width:80px;height:80px;border-radius:50%;border:2px solid rgba(201,168,76,0.65);display:flex;align-items:center;justify-content:center;}
+.scene{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 0.5s ease;}
+.scene.on{opacity:1;pointer-events:auto;}
+#vo{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:rgba(6,9,16,0.9);border:1px solid var(--gold-dim);border-radius:8px;padding:8px 22px;font-size:clamp(10px,1.35vw,14px);color:rgba(255,255,255,0.93);letter-spacing:0.02em;white-space:nowrap;z-index:90;opacity:0;transition:opacity 0.4s;max-width:92%;text-align:center;}
+#vo.show{opacity:1;}
+.mv-badge{position:absolute;top:14px;left:18px;z-index:80;display:flex;align-items:center;gap:7px;}
+.mv-dot{width:30px;height:30px;border-radius:7px;background:#5a3f0e;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;color:var(--gold-b);letter-spacing:-0.5px;}
+.mv-name{font-size:12px;font-weight:500;color:rgba(255,255,255,0.55);letter-spacing:0.08em;}
+#timer-badge{position:absolute;top:14px;right:18px;z-index:80;font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:0.06em;font-variant-numeric:tabular-nums;}
+.corner{position:absolute;width:22px;height:22px;opacity:0.4;}
+.corner.tl{top:10px;left:10px;border-top:1.5px solid var(--gold);border-left:1.5px solid var(--gold);}
+.corner.tr{top:10px;right:10px;border-top:1.5px solid var(--gold);border-right:1.5px solid var(--gold);}
+.corner.bl{bottom:22px;left:10px;border-bottom:1.5px solid var(--gold);border-left:1.5px solid var(--gold);}
+.corner.br{bottom:22px;right:10px;border-bottom:1.5px solid var(--gold);border-right:1.5px solid var(--gold);}
+@keyframes blink{50%{opacity:0;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes slideL{from{opacity:0;transform:translateX(-18px);}to{opacity:1;transform:translateX(0);}}
+@keyframes scan{to{left:100%;}}
+@keyframes webscroll{0%{top:0;}15%{top:0;}55%{top:-50%;}75%{top:-50%;}100%{top:-76%;}}
+
+#s1,#s4{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.s-tag{font-size:clamp(9px,1.1vw,11px);letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.s-headline{font-size:clamp(22px,5vw,54px);font-weight:900;color:#fff;line-height:1.08;}
+.s-headline em{color:var(--gold-b);font-style:normal;}
+.s-sub{font-size:clamp(10px,1.4vw,14px);color:rgba(255,255,255,0.36);letter-spacing:0.05em;margin-top:18px;}
+.cursor{display:inline-block;width:2px;height:0.88em;background:var(--gold);vertical-align:middle;margin-left:3px;animation:blink 0.85s step-end infinite;}
+.scan-line{position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent 65%,rgba(201,168,76,0.04) 100%);animation:scan 3.5s linear forwards;pointer-events:none;}
+.s4-url{font-size:clamp(9px,1.1vw,12px);color:rgba(255,255,255,0.22);letter-spacing:0.09em;margin-top:18px;}
+.s4-pills{display:flex;gap:8px;margin-top:14px;justify-content:center;flex-wrap:wrap;}
+.pill{background:rgba(201,168,76,0.1);border:1px solid var(--gold-dim);border-radius:20px;padding:5px 15px;font-size:clamp(9px,1vw,11px);color:var(--gold);}
+
+#s2 .browser{position:absolute;top:5%;left:50%;transform:translateX(-50%);width:86%;height:90%;background:#0d1117;border-radius:10px;border:1px solid var(--gold-dim);overflow:hidden;animation:fadeIn 0.5s ease forwards;}
+.bbar{background:#0a0e16;padding:8px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,0.06);}
+.bdot{width:7px;height:7px;border-radius:50%;}
+.burl{flex:1;background:rgba(255,255,255,0.05);border-radius:5px;padding:3px 10px;font-size:10px;color:rgba(255,255,255,0.3);margin:0 10px;letter-spacing:0.03em;}
+.bcont{height:calc(100% - 34px);overflow:hidden;position:relative;}
+#wscroll{position:absolute;top:0;left:0;width:100%;animation:webscroll 7s 0.4s ease-in-out forwards;}
+.wnav{background:#080b12;padding:9px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(201,168,76,0.1);}
+.wlogo{font-size:13px;font-weight:700;color:#fff;}.wlogo span{color:var(--gold);}
+.wlinks{display:flex;gap:11px;}.wlink{font-size:9px;color:rgba(255,255,255,0.36);}
+.wbtn{font-size:9px;color:var(--gold);border:1px solid var(--gold-dim);border-radius:5px;padding:3px 8px;}
+.whero{background:#080b12;padding:22px 20px 18px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.05);}
+.whtag{font-size:9px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.whhd{font-size:clamp(12px,2vw,17px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px;}
+.whp{font-size:9px;color:rgba(255,255,255,0.3);line-height:1.5;max-width:280px;margin:0 auto 14px;}
+.whbtns{display:flex;gap:8px;justify-content:center;}
+.whb1{background:var(--gold);color:#080b12;font-size:9px;border-radius:5px;padding:5px 12px;font-weight:700;}
+.whb2{border:1px solid rgba(255,255,255,0.13);color:rgba(255,255,255,0.4);font-size:9px;border-radius:5px;padding:5px 12px;}
+.wbadges{display:flex;gap:14px;justify-content:center;margin-top:11px;}
+.wbadge{font-size:8px;color:rgba(255,255,255,0.36);display:flex;align-items:center;gap:4px;}
+.wbdot{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.wmkt{background:#0a0f1a;padding:14px 16px 10px;}
+.wstag{font-size:9px;letter-spacing:0.1em;color:var(--gold);text-transform:uppercase;margin-bottom:5px;}
+.wsth{font-size:12px;font-weight:700;color:#fff;margin-bottom:11px;}
+.wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:8px;}
+.wtick{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.1);border-radius:7px;padding:8px 10px;}
+.wtsym{font-size:10px;font-weight:600;color:#fff;margin-bottom:3px;}
+.wtprice{font-size:11px;font-weight:700;color:#fff;}
+.wtchg{font-size:9px;margin-top:1px;}
+.up{color:var(--gold);}.dn{color:var(--red);}
+.wchart{height:18px;position:relative;}
+.wana{background:#080b12;padding:14px 16px;border-top:1px solid rgba(255,255,255,0.05);}
+.wcards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.wcard{background:rgba(255,255,255,0.03);border:1px solid rgba(201,168,76,0.09);border-radius:7px;padding:9px 8px;}
+.wctag{font-size:8px;color:var(--gold);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:4px;}
+.wchd{font-size:9px;font-weight:600;color:#fff;margin-bottom:3px;line-height:1.3;}
+.wcp{font-size:8px;color:rgba(255,255,255,0.27);line-height:1.4;}
+.wnews{background:#0a0f1a;padding:14px 16px;border-top:1px solid rgba(255,255,255,0.05);}
+.wnitems{display:flex;flex-direction:column;gap:5px;}
+.wnitem{display:flex;gap:10px;align-items:flex-start;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.wncat{font-size:8px;color:var(--gold);min-width:38px;}
+.wntitle{font-size:9px;color:rgba(255,255,255,0.6);line-height:1.4;}
+.wcta{background:#0d1117;padding:18px;text-align:center;border-top:1px solid var(--gold-dim);}
+.wctah{font-size:13px;font-weight:800;color:#fff;margin-bottom:5px;}
+.wctap{font-size:9px;color:rgba(255,255,255,0.3);margin-bottom:11px;}
+.wctabtn{background:var(--gold);color:#080b12;font-size:10px;border-radius:6px;padding:6px 17px;font-weight:700;display:inline-block;}
+
+#s3 .left{position:absolute;top:0;left:0;width:58%;height:100%;display:flex;align-items:center;justify-content:center;}
+#s3 .right{position:absolute;top:0;right:0;width:42%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 4% 0 2%;}
+.tframe{width:92%;background:rgba(255,255,255,0.04);border:1px solid var(--gold-dim);border-radius:10px;padding:14px 16px;}
+.thead{display:flex;align-items:center;gap:6px;margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:9px;}
+.tind{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.2s ease infinite;}
+.tlbl{font-size:9px;color:rgba(201,168,76,0.45);letter-spacing:0.08em;margin-left:auto;}
+.trow{display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:10px;}
+.trow:last-child{border:none;}
+.tsym{color:rgba(255,255,255,0.7);font-weight:600;}
+.tprice{color:#fff;font-weight:600;}
+.tchg{font-size:9px;}
+.spark{width:48px;height:18px;}
+.feats{display:flex;flex-direction:column;gap:11px;}
+.feat{display:flex;align-items:flex-start;gap:10px;}
+.ficon{width:28px;height:28px;border-radius:7px;border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fname{font-size:clamp(9px,1.2vw,12px);font-weight:600;color:#fff;margin-bottom:2px;}
+.fdesc{font-size:clamp(8px,1vw,10px);color:rgba(255,255,255,0.32);line-height:1.4;}
+</style>
+
+<h2 style="position:absolute;left:-9999px;">Intro YouTube Macrovisión — terminal financiera profesional</h2>
+
+<div id="stage">
+  <div class="grid-bg"></div>
+  <div class="mv-badge" id="mvb" style="display:none;"><div class="mv-dot">MV</div><span class="mv-name">MACROVISIÓN</span></div>
+  <div id="timer-badge" style="display:none;"></div>
+  <div id="pbar"></div>
+  <div id="vo"></div>
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+
+  <div class="overlay" id="plov">
+    <div style="text-align:center;">
+      <div class="play-ring"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><polygon points="5,3 20,12 5,21" fill="#c9a84c"/></svg></div>
+      <p style="color:rgba(255,255,255,0.45);font-size:11px;margin-top:13px;letter-spacing:0.07em;">REPRODUCIR INTRO</p>
+      <p style="color:rgba(255,255,255,0.2);font-size:10px;margin-top:4px;">≈ 30 s · voz masculina profesional</p>
+    </div>
+  </div>
+  <div class="overlay" id="rplov" style="display:none;">
+    <div style="text-align:center;">
+      <div class="play-ring"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+      <p style="color:rgba(255,255,255,0.4);font-size:11px;margin-top:13px;letter-spacing:0.07em;">REPETIR</p>
+    </div>
+  </div>
+
+  <!-- S1 HOOK -->
+  <div class="scene" id="s1">
+    <div class="scan-line"></div>
+    <div class="s-tag" style="animation:fadeUp 0.5s ease forwards;opacity:0;">Terminal profesional · Market Intelligence · 2026</div>
+    <div class="s-headline" style="animation:fadeUp 0.6s 0.25s ease forwards;opacity:0;">Los mercados no<br>esperan.<em> Tú tampoco.</em></div>
+    <div class="s-sub" style="animation:fadeUp 0.5s 0.55s ease forwards;opacity:0;">Análisis financiero · mercados en vivo · inteligencia macro<span class="cursor"></span></div>
+  </div>
+
+  <!-- S2 WEB SCROLL -->
+  <div class="scene" id="s2">
+    <div class="browser">
+      <div class="bbar">
+        <div class="bdot" style="background:#e24b4a;"></div>
+        <div class="bdot" style="background:#c9a84c;"></div>
+        <div class="bdot" style="background:#4a7c59;"></div>
+        <div class="burl">noticias.macrovision-contacto.workers.dev</div>
+      </div>
+      <div class="bcont">
+        <div id="wscroll">
+          <div class="wnav"><div class="wlogo">MV <span>Macrovisión</span></div><div class="wlinks"><span class="wlink">Mercados</span><span class="wlink">Análisis</span><span class="wlink">Actualidad</span><span class="wlink">Vídeos</span></div><div class="wbtn">Acceso</div></div>
+          <div class="whero">
+            <div class="whtag">Terminal profesional de inteligencia macro</div>
+            <div class="whhd">Análisis financiero, mercados en vivo<br>y noticias macroeconómicas en una sola terminal.</div>
+            <div class="whp">Centraliza índices, renta variable, criptomonedas, divisas y materias primas en una interfaz profesional orientada a decisiones.</div>
+            <div class="whbtns"><div class="whb1">Ver terminal</div><div class="whb2">Explorar análisis</div></div>
+            <div class="wbadges"><div class="wbadge"><div class="wbdot"></div>Europa abierta</div><div class="wbadge"><div class="wbdot" style="background:rgba(201,168,76,0.45);"></div>Riesgo moderado</div><div class="wbadge"><div class="wbdot"></div>Rotación defensiva</div></div>
+          </div>
+          <div class="wmkt">
+            <div class="wstag">Mercados</div><div class="wsth">Panel operativo en vivo</div>
+            <div class="wgrid">
+              <div class="wtick"><div class="wtsym">SPY</div><div class="wchart"><svg viewBox="0 0 80 18" width="100%" height="100%"><polyline points="0,15 15,11 28,13 40,7 55,5 68,3 80,2" fill="none" stroke="#c9a84c" stroke-width="1.2"/></svg></div><div class="wtprice">$591.40 <span class="wtchg up">+0.82%</span></div></div>
+              <div class="wtick"><div class="wtsym">BTC</div><div class="wchart"><svg viewBox="0 0 80 18" width="100%" height="100%"><polyline points="0,5 15,10 28,4 40,12 55,8 68,14 80,10" fill="none" stroke="#e24b4a" stroke-width="1.2"/></svg></div><div class="wtprice">$107,220 <span class="wtchg dn">-1.14%</span></div></div>
+              <div class="wtick"><div class="wtsym">EUR/USD</div><div class="wchart"><svg viewBox="0 0 80 18" width="100%" height="100%"><polyline points="0,12 15,9 28,11 40,6 55,8 68,5 80,7" fill="none" stroke="#c9a84c" stroke-width="1.2"/></svg></div><div class="wtprice">1.1342 <span class="wtchg up">+0.31%</span></div></div>
+              <div class="wtick"><div class="wtsym">GOLD</div><div class="wchart"><svg viewBox="0 0 80 18" width="100%" height="100%"><polyline points="0,14 15,11 28,13 40,8 55,10 68,6 80,5" fill="none" stroke="#c9a84c" stroke-width="1.2"/></svg></div><div class="wtprice">$3,291 <span class="wtchg up">+0.57%</span></div></div>
+            </div>
+          </div>
+          <div class="wana">
+            <div class="wstag">Análisis</div><div class="wsth">Análisis macroeconómico y técnico</div>
+            <div class="wcards">
+              <div class="wcard"><div class="wctag">Macro</div><div class="wchd">Inflación y bancos centrales</div><div class="wcp">Senda de tipos más estable. Clave: salarios y energía.</div></div>
+              <div class="wcard"><div class="wctag">Riesgo</div><div class="wchd">Rotación de cartera</div><div class="wcp">Flujo entre tecnología y sectores defensivos.</div></div>
+              <div class="wcard"><div class="wctag">Técnico</div><div class="wchd">Niveles a vigilar</div><div class="wcp">Soportes semanales y rupturas con volumen.</div></div>
+            </div>
+          </div>
+          <div class="wnews">
+            <div class="wstag">Actualidad</div><div class="wsth">Briefing de mercado</div>
+            <div class="wnitems">
+              <div class="wnitem"><span class="wncat">BCE</span><span class="wntitle">Pausa en el ciclo bajista de tipos confirmada</span></div>
+              <div class="wnitem"><span class="wncat">FED</span><span class="wntitle">Powell señala cautela ante datos mixtos de empleo</span></div>
+              <div class="wnitem"><span class="wncat">CRIPTO</span><span class="wntitle">Bitcoin consolida entre $105k–$110k con volumen institucional</span></div>
+            </div>
+          </div>
+          <div class="wcta"><div class="wctah">Prepara tu mesa de análisis.</div><div class="wctap">Accede a la terminal, configura activos y define alertas.</div><div class="wctabtn">Solicitar acceso</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S3 TERMINAL SPLIT -->
+  <div class="scene" id="s3">
+    <div class="left">
+      <div class="tframe" style="animation:slideL 0.5s ease forwards;">
+        <div class="thead"><div class="tind"></div><span style="font-size:10px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:0.04em;">MACROVISIÓN TERMINAL</span><span class="tlbl">LIVE</span></div>
+        <div class="trow" style="animation:fadeUp 0.4s 0.1s ease forwards;opacity:0;"><span class="tsym">SPY</span><svg class="spark" viewBox="0 0 48 18"><polyline points="0,15 8,11 16,13 24,7 32,5 40,3 48,2" fill="none" stroke="#c9a84c" stroke-width="1.3"/></svg><span class="tprice">$591.40</span><span class="tchg up">+0.82%</span></div>
+        <div class="trow" style="animation:fadeUp 0.4s 0.25s ease forwards;opacity:0;"><span class="tsym">BTC</span><svg class="spark" viewBox="0 0 48 18"><polyline points="0,5 8,10 16,4 24,12 32,8 40,14 48,10" fill="none" stroke="#e24b4a" stroke-width="1.3"/></svg><span class="tprice">$107,220</span><span class="tchg dn">-1.14%</span></div>
+        <div class="trow" style="animation:fadeUp 0.4s 0.4s ease forwards;opacity:0;"><span class="tsym">EUR/USD</span><svg class="spark" viewBox="0 0 48 18"><polyline points="0,12 8,9 16,11 24,6 32,8 40,5 48,7" fill="none" stroke="#c9a84c" stroke-width="1.3"/></svg><span class="tprice">1.1342</span><span class="tchg up">+0.31%</span></div>
+        <div class="trow" style="animation:fadeUp 0.4s 0.55s ease forwards;opacity:0;"><span class="tsym">GOLD</span><svg class="spark" viewBox="0 0 48 18"><polyline points="0,14 8,11 16,13 24,8 32,10 40,6 48,5" fill="none" stroke="#c9a84c" stroke-width="1.3"/></svg><span class="tprice">$3,291</span><span class="tchg up">+0.57%</span></div>
+        <div class="trow" style="animation:fadeUp 0.4s 0.7s ease forwards;opacity:0;"><span class="tsym">NASDAQ</span><svg class="spark" viewBox="0 0 48 18"><polyline points="0,13 8,10 16,12 24,5 32,7 40,3 48,4" fill="none" stroke="#c9a84c" stroke-width="1.3"/></svg><span class="tprice">19,842</span><span class="tchg up">+1.20%</span></div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="feats" style="animation:fadeUp 0.5s 0.35s ease forwards;opacity:0;">
+        <div class="feat"><div class="ficon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div><div class="fname">Mercados en tiempo real</div><div class="fdesc">Índices, divisas, cripto y materias primas</div></div></div>
+        <div class="feat"><div class="ficon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><div class="fname">Análisis macro profundo</div><div class="fdesc">Bancos centrales, inflación, rotación de cartera</div></div></div>
+        <div class="feat"><div class="ficon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div><div><div class="fname">Briefing diario</div><div class="fdesc">Síntesis editorial macroeconómica propia</div></div></div>
+        <div class="feat"><div class="ficon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></div><div><div class="fname">Canal de YouTube</div><div class="fdesc">Vídeos, shorts y directos de actualidad</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4 CTA -->
+  <div class="scene" id="s4">
+    <div class="s-tag" style="animation:fadeUp 0.45s ease forwards;opacity:0;">Bienvenido al canal oficial</div>
+    <div class="s-headline" style="animation:fadeUp 0.55s 0.2s ease forwards;opacity:0;">Esto es<br><em>Macrovisión.</em></div>
+    <div class="s4-url" style="animation:fadeUp 0.45s 0.5s ease forwards;opacity:0;">noticias.macrovision-contacto.workers.dev</div>
+    <div class="s4-pills" style="animation:fadeUp 0.45s 0.7s ease forwards;opacity:0;">
+      <div class="pill">Suscríbete</div>
+      <div class="pill">Activa la campana</div>
+      <div class="pill">Acceso gratuito</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPT PANEL -->
+<div style="margin-top:14px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;">
+  <p style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Guion voz en off masculina — duraciones reales medidas en tiempo de ejecución</p>
+  <p style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px;">Las escenas se extienden automáticamente para que el audio termine antes de avanzar.</p>
+  <div id="srows"></div>
+</div>
+
+<script>
+const LINES=[
+  'Los mercados no esperan. Tú tampoco. Bienvenido a Macrovisión.',
+  'Una terminal profesional de inteligencia macro. Mercados en vivo, análisis económico en profundidad, noticias macroeconómicas actualizadas... todo integrado en una sola plataforma.',
+  'Índices globales, divisas, criptomonedas y materias primas en tiempo real. Análisis técnico y macro para tomar decisiones fundamentadas en cada sesión.',
+  'Esto es Macrovisión. Suscríbete ahora, activa la campana de notificaciones y accede de forma completamente gratuita desde hoy.'
+];
+const IDS=['s1','s2','s3','s4'];
+const MIN_DUR=[5000,8000,7000,6000];
+
+const pbar=document.getElementById('pbar');
+const voEl=document.getElementById('vo');
+const plov=document.getElementById('plov');
+const rplov=document.getElementById('rplov');
+const mvb=document.getElementById('mvb');
+const timerBadge=document.getElementById('timer-badge');
+
+let raf=null,startTs=null,curIdx=-1,running=false;
+let sceneDurations=[...MIN_DUR];
+let sceneStarts=[];
+let totalDur=0;
+let voTimers=[];
+
+function buildTimings(){
+  sceneStarts=[];
+  let acc=0;
+  sceneDurations.forEach(d=>{sceneStarts.push(acc);acc+=d;});
+  totalDur=acc;
+}
+buildTimings();
+
+function showScene(idx){
+  IDS.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    el.classList.toggle('on',i===idx);
+  });
+}
+
+function setVo(text,dur){
+  voEl.textContent=text;
+  voEl.classList.add('show');
+  setTimeout(()=>voEl.classList.remove('show'),Math.max(dur-600,1000));
+}
+
+function tick(ts){
+  if(!startTs) startTs=ts;
+  const elapsed=ts-startTs;
+  const pct=Math.min(elapsed/totalDur*100,100);
+  pbar.style.width=pct+'%';
+  const rem=Math.max(0,Math.ceil((totalDur-elapsed)/1000));
+  timerBadge.textContent='0:'+String(rem).padStart(2,'0');
+
+  let found=-1;
+  for(let i=sceneStarts.length-1;i>=0;i--){
+    if(elapsed>=sceneStarts[i]){found=i;break;}
+  }
+  if(found>=IDS.length){
+    pbar.style.width='100%';
+    voEl.classList.remove('show');
+    timerBadge.style.display='none';
+    running=false;
+    rplov.style.display='flex';
+    mvb.style.display='none';
+    return;
+  }
+  if(found!==curIdx){
+    curIdx=found;
+    showScene(curIdx);
+    setVo(LINES[curIdx],sceneDurations[curIdx]);
+  }
+  raf=requestAnimationFrame(tick);
+}
+
+function getBestMaleVoice(){
+  if(!window.speechSynthesis) return null;
+  const vv=speechSynthesis.getVoices();
+  const prio=[
+    v=>v.lang==='es-ES'&&/google/i.test(v.name),
+    v=>v.lang==='es-ES'&&/male|hombre|jorge|pablo|miguel|antonio|carlos|diego/i.test(v.name),
+    v=>v.lang.startsWith('es-ES'),
+    v=>v.lang.startsWith('es')&&/google/i.test(v.name),
+    v=>v.lang.startsWith('es'),
+  ];
+  for(const fn of prio){const f=vv.find(fn);if(f) return f;}
+  return null;
+}
+
+function speakWithCallback(text,voice,onEnd){
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='es-ES';
+  u.rate=0.86;
+  u.pitch=0.75;
+  u.volume=1;
+  if(voice) u.voice=voice;
+  u.onend=onEnd||null;
+  speechSynthesis.speak(u);
+  return u;
+}
+
+function measureAndSpeak(){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const voice=getBestMaleVoice();
+  let measured=[...MIN_DUR];
+  let currentLine=0;
+
+  function speakNext(){
+    if(currentLine>=LINES.length) return;
+    const idx=currentLine;
+    const t0=performance.now();
+    speakWithCallback(LINES[idx],voice,()=>{
+      const dur=performance.now()-t0;
+      measured[idx]=Math.max(MIN_DUR[idx],Math.ceil(dur)+1200);
+      sceneDurations=measured;
+      buildTimings();
+      currentLine++;
+      speakNext();
+    });
+    currentLine++;
+  }
+
+  const voice2=getBestMaleVoice();
+  const delays=[0, Math.max(MIN_DUR[0],6000), Math.max(MIN_DUR[0]+MIN_DUR[1],14500), Math.max(MIN_DUR[0]+MIN_DUR[1]+MIN_DUR[2],22000)];
+
+  delays.forEach((d,i)=>{
+    const t=setTimeout(()=>{
+      if(!running) return;
+      speakWithCallback(LINES[i],voice2,null);
+    },d);
+    voTimers.push(t);
+  });
+}
+
+function start(){
+  plov.style.display='none';
+  rplov.style.display='none';
+  mvb.style.display='flex';
+  timerBadge.style.display='block';
+  pbar.style.width='0%';
+  curIdx=-1;startTs=null;running=true;
+  voTimers.forEach(clearTimeout);voTimers=[];
+  IDS.forEach(id=>document.getElementById(id).classList.remove('on'));
+  if(raf) cancelAnimationFrame(raf);
+  buildTimings();
+  raf=requestAnimationFrame(tick);
+  measureAndSpeak();
+}
+
+plov.addEventListener('click',start);
+rplov.addEventListener('click',start);
+
+if(window.speechSynthesis){
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
+}
+
+const rows=document.getElementById('srows');
+const labels=['Escena 1 · Hook','Escena 2 · Web scroll','Escena 3 · Terminal','Escena 4 · CTA'];
+LINES.forEach((l,i)=>{
+  const d=document.createElement('div');
+  d.style.cssText='display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:start;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);';
+  if(i===LINES.length-1) d.style.borderBottom='none';
+  d.innerHTML=`<span style="font-size:11px;font-weight:500;color:var(--color-text-secondary);">${labels[i]}</span><span style="font-size:12px;color:var(--color-text-primary);line-height:1.6;font-style:italic;">"${l}"</span>`;
+  rows.appendChild(d);
+});
+</script>

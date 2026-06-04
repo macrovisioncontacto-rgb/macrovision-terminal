@@ -11,10 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="site.webmanifest">
-<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="stylesheet" href="/style.css">
-<script src="/script.js" defer></script>
+  <link rel="preload" as="image" href="assets/logo-macrovision-v2.jpg">
+  <link rel="icon" href="assets/favicon-v2.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-v2.png">
+  <link rel="shortcut icon" href="assets/favicon-v2.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/favicon-v2.png">
   <meta property="og:title" content="Macrovisión | Inteligencia financiera global">
   <meta property="og:description" content="Terminal profesional de análisis financiero, mercados en vivo y noticias macroeconómicas.">
   <meta property="og:type" content="website">
@@ -28,13 +29,13 @@
   <meta name="twitter:title" content="Macrovisión | Inteligencia financiera global">
   <meta name="twitter:description" content="Terminal profesional de análisis financiero, mercados en vivo y noticias macroeconómicas.">
   <meta name="twitter:image" content="https://noticias.macrovision-contacto.workers.dev/assets/og-image-v2.jpg">
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@type":"Organization",
-  "name":"MacroVision",
+  "name":"Macrovisión",
   "url":"https://noticias.macrovision-contacto.workers.dev/",
-  "logo":"https://noticias.macrovision-contacto.workers.dev/assets/logo-macrovision-v2.png"
+  "logo":"https://noticias.macrovision-contacto.workers.dev/assets/logo-macrovision-v2.jpg"
 }
 </script>
   <script src="https://s3.tradingview.com/tv.js" defer></script>
@@ -48,7 +49,7 @@
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Macrovisión inicio">
       <span class="brand-mark" aria-hidden="true">
-        <img src="/assets/favicon.svg" alt="" width="40" height="40" decoding="async">
+        <img src="assets/mv-mark.png" alt="" width="40" height="40" decoding="async">
       </span>
       <span>
         <strong>Macrovisión</strong>
@@ -85,13 +86,8 @@
 
   <main>
     <section class="hero section-shell" id="inicio">
-      <div class="hero-copy"> <img
-  class="hero-logo"
-  src="/assets/og-image.png"
-  alt="Logo Macrovisión"
-  loading="eager"
-  decoding="async">
-
+      <div class="hero-copy">
+        <img class="hero-logo" src="assets/logo-macrovision-v2.jpg" alt="Macrovisión" width="360" height="203" decoding="async" fetchpriority="high">
         <p class="eyebrow" data-i18n="hero_eyebrow">Terminal profesional de inteligencia macro</p>
         <h1 data-i18n="hero_title">Análisis financiero, mercados en vivo y noticias macroeconómicas en una sola terminal.</h1>
         <p class="hero-intro" data-i18n="hero_intro">Centraliza vigilancia de índices, renta variable, criptomonedas, divisas y materias primas en una interfaz profesional, rápida y orientada a decisiones.</p>
@@ -102,6 +98,9 @@
       </div>
 
       <div class="hero-panel" aria-label="Resumen ejecutivo">
+        <figure class="hero-cover">
+          <img src="assets/og-image-v2.jpg" alt="Portada de Macrovisión" width="1024" height="576" decoding="async">
+        </figure>
         <article class="session-card">
           <span data-i18n="session_label">Sesión</span>
           <strong id="session-state">Europa abierta</strong>
@@ -237,13 +236,13 @@
   <div class="section-heading">
 
     <div>
-      <p class="eyebrow" data-i18n="smart_money_eyebrow">Smart Money</p>
+      <p class="eyebrow">Smart Money</p>
 
-      <h2 data-i18n="smart_money_title">
+      <h2>
         Portfolios de los inversores más exitosos del mundo
       </h2>
 
-      <p class="section-intro" data-i18n="smart_money_intro">
+      <p class="section-intro">
         Seguimiento de Berkshire Hathaway, Pershing Square,
         Scion Capital y otros gestores legendarios.
       </p>
@@ -257,11 +256,11 @@
 
     <div class="panel-header">
       <div>
-        <p class="panel-kicker" data-i18n="consensus_kicker">
+        <p class="panel-kicker">
           Consensus Portfolio
         </p>
 
-        <h3 data-i18n="consensus_title">
+        <h3>
           Acciones más repetidas
         </h3>
       </div>
@@ -275,11 +274,11 @@
 
     <div class="panel-header">
       <div>
-        <p class="panel-kicker" data-i18n="alerts_kicker">
+        <p class="panel-kicker">
           Smart Money Alerts
         </p>
 
-        <h3 data-i18n="alerts_title">
+        <h3>
           Últimos movimientos detectados
         </h3>
       </div>

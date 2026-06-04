@@ -168,14 +168,6 @@ const dictionary = {
     insight_risk_text: "El flujo alterna entre tecnología de alta capitalización y sectores defensivos mientras se ajustan las primas de riesgo.",
     insight_technical_title: "Niveles a vigilar",
     insight_technical_text: "La reacción en soportes semanales y rupturas con volumen ayuda a separar ruido intradía de movimiento direccional.",
-    nav_smart_money: "Smart Money",
-    smart_money_eyebrow: "Smart Money",
-    smart_money_title: "Portfolios de los inversores más exitosos del mundo",
-    smart_money_intro: "Seguimiento de Berkshire Hathaway, Pershing Square, Scion Capital y otros gestores legendarios.",
-    consensus_kicker: "Consensus Portfolio",
-    consensus_title: "Acciones más repetidas",
-    alerts_kicker: "Smart Money Alerts",
-    alerts_title: "Últimos movimientos detectados",
     news_eyebrow: "Actualidad",
     news_title: "Noticias macroeconómicas y briefing de mercado",
     news_intro: "Titulares desarrollados como síntesis editorial propia, con referencias públicas y notas de atribución para una lectura responsable.",
@@ -284,14 +276,6 @@ const dictionary = {
     insight_risk_text: "Flows alternate between large-cap technology and defensive sectors while risk premia continue to adjust.",
     insight_technical_title: "Levels to watch",
     insight_technical_text: "Reactions at weekly support levels and volume-backed breakouts help separate intraday noise from directional moves.",
-    nav_smart_money: "Smart Money",
-    smart_money_eyebrow: "Smart Money",
-    smart_money_title: "Portfolios of the world's most successful investors",
-    smart_money_intro: "Track Berkshire Hathaway, Pershing Square, Scion Capital and other legendary fund managers.",
-    consensus_kicker: "Consensus Portfolio",
-    consensus_title: "Most repeated positions",
-    alerts_kicker: "Smart Money Alerts",
-    alerts_title: "Latest detected movements",
     news_eyebrow: "Market News",
     news_title: "Macroeconomic news and market briefing",
     news_intro: "Headlines developed as proprietary editorial summaries, with public references and attribution notes for responsible reading.",
@@ -1105,3 +1089,4 @@ container.innerHTML +=
 });
 
 }
+

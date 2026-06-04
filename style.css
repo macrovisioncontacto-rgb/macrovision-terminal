@@ -419,6 +419,32 @@ h3 {
   gap: 12px;
 }
 
+.hero-cover {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #05070d;
+  box-shadow: var(--shadow);
+}
+
+.hero-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 58%, rgba(5, 7, 13, 0.32));
+  pointer-events: none;
+}
+
+.hero-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+}
+
 .eyebrow,
 .panel-kicker {
   margin: 0 0 8px;
@@ -1217,7 +1243,13 @@ input:focus {
     flex-direction: column;
   }
 
-
+.hero-logo{
+    width:100%;
+    max-width:420px;
+    height:auto;
+    display:block;
+    margin-bottom:20px;
+}
   h1 {
     font-size: clamp(2.45rem, 13vw, 4.4rem);
     line-height: 0.98;
